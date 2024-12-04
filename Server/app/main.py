@@ -6,6 +6,7 @@ from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from fastapi.middleware.cors import CORSMiddleware
 
+
 app = FastAPI()
 
 origins = [
@@ -31,7 +32,7 @@ llm = ChatOpenAI(openai_api_key=openai_api_key,
 async def generate_quiz(topic: str):
     try:
         # Define your prompt for generating a quiz
-        prompt_template = PromptTemplate.from_template("Generate a quiz with 4 numbered questions about {topic}.")
+        prompt_template = PromptTemplate.from_template("Generate one quiz with 4 numbered questions about {topic}. out put should be in json")
 
         prompt_input = prompt_template.format(topic=topic)
 
