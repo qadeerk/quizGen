@@ -1,16 +1,16 @@
 from langchain.prompts import PromptTemplate
         
 quiz_generation_template = PromptTemplate(template="""
-    Generate a question and a answer out of the below test, the answer should be concise as possible 
+    Use the following Question and Answer to generate three false options for a quiz as output these options should not be the correct answer to the question
     -----
-    question: {question}
+    Question: {Question}
     Answer: {Answer}
     -----
-    Format output in json 
-    {
-        option1:[value], 
-        option2:[value],
-        option3:[value],
-    }
+    Format output in object that can be parsed in json
+    [
+        1:[value1],
+        2:[value2],
+        3:[value3],
+    ]
 """
-,input_variable=['question','Answer'])
+,input_variable=['Question','Answer'])

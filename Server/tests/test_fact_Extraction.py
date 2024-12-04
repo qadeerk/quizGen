@@ -1,8 +1,8 @@
 import os
 import sys
 
-# Add the directory two levels above to sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+# Add the parent directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from deepeval.test_case import LLMTestCase
 from deepeval import evaluate

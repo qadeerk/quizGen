@@ -14,7 +14,7 @@ llm = ChatOpenAI(openai_api_key=load_api_key(),
                  model_name="gpt-4o-mini",
                  temperature= 0.0)
 
-metric = ContextualRelevancyMetric(
+metric = ContextualPrecisionMetric(
     threshold=0.7,
     model="gpt-4",
     include_reason=True
@@ -24,7 +24,6 @@ def test_answer_relevancy():
     answer_relevancy_metric = AnswerRelevancyMetric(threshold=0.5)
     test_case = LLMTestCase(
         input="What if these shoes don't fit?",
-        # Replace this with the actual output of your LLM application
         actual_output=llm.invoke(fact_extraction_template.format(topic="topic")),
         retrieval_context=["All customers are eligible for a 30 day full refund at no extra cost."]
     )

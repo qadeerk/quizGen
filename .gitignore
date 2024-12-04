@@ -73,3 +73,10 @@ cover/
 # Spyder project settings
 .spyderproject
 .spyproject
+
+#deep eval
+.deepeval-cache.json
+.deepeval_telemtry.txt
+
+#env
+.env
