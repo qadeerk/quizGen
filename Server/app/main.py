@@ -1,11 +1,17 @@
+import os
+import sys
 import json
-from fastapi import FastAPI, HTTPException
-from getProperty import load_api_key
-from langchain import OpenAI
-from langchain.prompts import PromptTemplate
+import uuid
+from fastapi import FastAPI, HTTPException, Request
 from langchain_openai import ChatOpenAI
 from fastapi.middleware.cors import CORSMiddleware
 
+# Add the parent directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from promptChain.factChain.chain import factBasedQuizGenerationChain
+from promptChain.utils.jsonUtils import getCleanJson
+from quizDb import SaveQuiz, GetQuiz
 
 app = FastAPI()
 
@@ -22,33 +28,33 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize OpenAI with your API key
-openai_api_key = load_api_key()  # Replace with your OpenAI API key
-# llm = OpenAI(api_key=openai_api_key)
-llm = ChatOpenAI(openai_api_key=openai_api_key,
-                 model_name="gpt-4o-mini")
-
-@app.get("/generateQuiz")
-async def generate_quiz(topic: str):
+@app.post("/generateQuiz")
+async def generate_quiz(request: Request):
     try:
-        # Define your prompt for generating a quiz
-        prompt_template = PromptTemplate.from_template("Generate one quiz with 4 numbered questions about {topic}. out put should be in json")
+        data = await request.json()
+        context = data.get("context")
+        job_description = data.get("jobDescription")
+        cv_data = data.get("cvData")
+        
+        
+        quiz = getCleanJson(factBasedQuizGenerationChain(context))
+        # Generate a UUID
+        quiz_id = str(uuid.uuid4())
+        SaveQuiz(quiz_id, quiz)
 
-        prompt_input = prompt_template.format(topic=topic)
-
-        # Generate the quiz
-        response = llm.invoke(prompt_input)
-
-        return {"quiz": response.content}
-
+        response = {}
+        response["quiz_id"] = quiz_id
+        return response
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail=str(e))
 
-
-
+@app.get("/getQuiz")
+async def generate_quiz(id: str):
+    print(f"Getting quiz with UUID: {id}")
+    return GetQuiz(id)
 
 # Mock APIs below ( These are just for developing the front end )
-
 @app.get("/getMockQuiz")
 async def generate_quiz(id: int):
     try:
@@ -111,8 +117,7 @@ async def generate_quiz(id: int):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/submitMockQuizResponce")
-async def generate_quiz():
+
     try:
         return "submited"
 
@@ -122,7 +127,5 @@ async def generate_quiz():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-
-
 
 # TODO : https://www.youtube.com/watch?v=D-JD4tM0NvU (Restructure application)

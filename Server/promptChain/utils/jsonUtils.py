@@ -42,11 +42,11 @@ answers = ["Paris", "4"]
 # print(mergeJsonObjects(questions, answers))
 
 
-def merge_questions_and_answers(correct_answers, false_answers):
+def merge_questions_and_answers(correct_answers, false_answers) -> json:
     merged_data = []
     
     # Iterate over both lists simultaneously
-    for correct, false in zip(correct_answers, false_answers):
+    for index, (correct, false) in enumerate(zip(correct_answers, false_answers)):
         question = correct['Question']
         correct_answer = correct['Answer']
         
@@ -61,9 +61,9 @@ def merge_questions_and_answers(correct_answers, false_answers):
         
         # Create the merged object
         merged_data.append({
-            "question": question,
-            "answers": randomized_answers,
-            "correct_answer_index": correct_index
+            "question": {"id": index,"value": question},
+            "options": [{"id": idx, "value": answer} for idx, answer in enumerate(randomized_answers)],
+            "answerIndex": correct_index
         })
     
     return json.dumps(merged_data, indent=4)
@@ -83,7 +83,5 @@ false_answers = [
 ]
 
 # Generate the merged JSON
-merged_json = merge_questions_and_answers(correct_answers, false_answers)
-
-# Print the resulting JSON
-print(merged_json)
+# merged_json = merge_questions_and_answers(correct_answers, false_answers)
+# print(merged_json)

@@ -20,7 +20,7 @@ llm = ChatOpenAI(model_name="gpt-4o-mini",
                  temperature= 0.0)
 
 # This is the summary, replace this with the actual output from your LLM application
-actual_output= llm.invoke(question_generation_template.format(text="jon is 5 meet tall")).content
+actual_output= llm.invoke(question_generation_template.format(text="jon is 5 feet tall")).content
 
 print(actual_output)
 

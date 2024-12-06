@@ -1,0 +1,77 @@
+[
+    {
+        "question": {
+            "id": 0,
+            "value": "What does Object-Oriented Programming (OOP) focus on in software design?"
+        },
+        "options": [
+            {
+                "id": 0,
+                "value": "OOP emphasizes the use of global variables in programming."
+            },
+            {
+                "id": 1,
+                "value": "OOP focuses on organizing software design around functions and procedures."
+            },
+            {
+                "id": 2,
+                "value": "OOP is primarily concerned with the speed of code execution."
+            },
+            {
+                "id": 3,
+                "value": "OOP focuses on organizing software design around data or objects."
+            }
+        ],
+        "answerIndex": 3
+    },
+    {
+        "question": {
+            "id": 1,
+            "value": "What are the key principles of Object-Oriented Programming (OOP)?"
+        },
+        "options": [
+            {
+                "id": 0,
+                "value": "Modularity, concurrency, security, and simplicity"
+            },
+            {
+                "id": 1,
+                "value": "Functional programming, procedural programming, scripting, and markup"
+            },
+            {
+                "id": 2,
+                "value": "Data structures, algorithms, recursion, and iteration"
+            },
+            {
+                "id": 3,
+                "value": "Encapsulation, inheritance, polymorphism, and abstraction."
+            }
+        ],
+        "answerIndex": 3
+    },
+    {
+        "question": {
+            "id": 2,
+            "value": "What are the main benefits of encapsulation and inheritance in object-oriented programming?"
+        },
+        "options": [
+            {
+                "id": 0,
+                "value": "Encapsulation simplifies user interfaces, while inheritance eliminates the need for polymorphism."
+            },
+            {
+                "id": 1,
+                "value": "Encapsulation allows for faster execution, while inheritance reduces memory usage."
+            },
+            {
+                "id": 2,
+                "value": "Encapsulation protects data integrity, while inheritance promotes code reuse and extensibility."
+            },
+            {
+                "id": 3,
+                "value": "Encapsulation increases the complexity of code, while inheritance restricts code sharing."
+            }
+        ],
+        "answerIndex": 2
+    }
+]

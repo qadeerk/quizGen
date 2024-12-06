@@ -1,0 +1,38 @@
+[
+    {
+        "question": "What does Object-Oriented Programming (OOP) focus on in software design?",
+        "options": [
+            "OOP focuses on organizing software design around functions and procedures.",
+            "OOP focuses on organizing software design around data or objects.",
+            "OOP is primarily concerned with the speed of code execution.",
+            "OOP emphasizes the use of global variables in programming."
+        ],
+        "answerIndex": 1
+    },
+    {
+        "question": "What are the key principles of Object-Oriented Programming (OOP)?",
+        "answers": [
+            "Encapsulation, inheritance, polymorphism, and abstraction.",
+            "Data structures, algorithms, recursion, and iteration",
+            "Modularity, concurrency, security, and simplicity",
+            "Functional programming, procedural programming, scripting, and markup"
+        ],
+        "correct_answer_index": 0
+    },
+    {
+        "question": "How does encapsulation protect data integrity?",
+        "answers": [
+            [
+                "By allowing unrestricted access to all components within an object."
+            ],
+            [
+                "By exposing all internal states of an object to external functions."
+            ],
+            [
+                "By duplicating data across multiple objects."
+            ],
+            "By restricting access to certain components within an object."
+        ],
+        "correct_answer_index": 3
+    }
+]

@@ -4,5 +4,5 @@ type QuestionT = Readonly<{
 }>
 
 export default function Question({question}:QuestionT){
-    return <div><p>{question}</p></div>
+    return <div style={{ fontWeight: "bold"}}><p>{question}</p></div>
 }

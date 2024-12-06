@@ -18,44 +18,45 @@ export const Quiz: React.FC<IQuizProps> = (props: IQuizProps) => {
     useEffect(() => {
         // requestQuiz()
         setStatus("loading")
-        if(localCache[props.id]){
+        if (localCache[props.id]) {
             setQuizCollection(localCache[props.id])
             setStatus("loaded")
 
-        }else{
+        } else {
             requestQuiz(props.id)
             setStatus("loaded")
         }
 
         async function requestQuiz(id: number) {
-            const response = await fetch(`http://localhost:8000/getMockQuiz?id=${id}`)
+            const response = await fetch(`http://localhost:8000/getQuiz?id=${id}`)
             const json = await response.json()
-            console.log(JSON.parse(json))
-            setQuizCollection(JSON.parse(json));
-            localCache[id] = JSON.parse(json);
+            console.log(json)
+            setQuizCollection(json);
+            localCache[id] = json;
         }
 
     }, [])
 
-    // if (status === "loading") {
-    //     if (quizCollection.length) {
-            return (
-                <>
-                    {/* TODO : question and option can be simple div also */}
-                    {quizCollection.map(q =>
-                        <div key={q.question.id}>
-                            <Question question={q.question.value} />
 
-                            {q.options.map((option) => {
-                                return <Option key={option.id} option={option.value} />
-                            })}
-                        </div>
-                    )}
-                </>
-            )
-        // } else {
-        //     <div> No quiz found </div>
-        // }
-    // }
+    return (
+        <div className="hc-container">
+            {/* TODO : question and option can be simple div also */}
+            {quizCollection.map(q =>
+                <div key={q.question.id} style={{ padding: "5px 0" }}>
+                    <Question question={q.question.value} />
+                    <div style={{ paddingLeft: "10px" }}>
+                        {q.options.map((option) => {
+                            return (
+                                <div key={option.id}>
+                                    <input type="radio" id={option.id.toString()} name={`question-${q.question.id}`} value={option.value} />
+                                    <label htmlFor={option.id.toString()} style={{ paddingLeft: "5px" }}>{option.value}</label>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            )}
+        </div>
+    )
 
-}
+}             
