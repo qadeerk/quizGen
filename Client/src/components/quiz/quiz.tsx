@@ -1,8 +1,9 @@
 import Question from "../question/question"
-import { Option } from "../option/option"
 import { QuizT } from "../../types/quiz"
 import { useEffect, useState } from "react"
 import { sampleQuiz } from "../../contexts/getSampleQuiz"
+import EdiText from 'react-editext'
+import "./quiz.css";
 
 const localCache: { [key: number]: QuizT[] } = {};
 
@@ -14,9 +15,9 @@ export const Quiz: React.FC<IQuizProps> = (props: IQuizProps) => {
     // const {quizCollection,setQuizCollection} = useState<QuizT[]>(sampleQuiz)
     const [quizCollection, setQuizCollection] = useState<Array<QuizT>>(sampleQuiz)
     const [status, setStatus] = useState<string>("unloaded")
+    const [canEditQuiz, setCanEdit] = useState<string>("");
 
     useEffect(() => {
-        // requestQuiz()
         setStatus("loading")
         if (localCache[props.id]) {
             setQuizCollection(localCache[props.id])
@@ -38,18 +39,34 @@ export const Quiz: React.FC<IQuizProps> = (props: IQuizProps) => {
     }, [])
 
 
+    const handleSave = (val: any) => {
+        console.log('Edited Value -> ', val);
+        // setValue(val);
+    }
+
+    const toggleEdit = () => {
+        canEditQuiz === "" ? setCanEdit("canEdit") : setCanEdit("");
+    }
+
     return (
         <div className="hc-container">
-            {/* TODO : question and option can be simple div also */}
+            <button id="edit-quiz-btn" className="hc-generate-btn" style={{ float: "right", marginLeft: "20px" }} onClick={() => alert("Work to be done")}>publish</button>
+            <button id="edit-quiz-btn" className="hc-generate-btn" onClick={toggleEdit} style={{ float: "right" }}>{canEditQuiz === "" ? "Edit" : "View"}</button>
             {quizCollection.map(q =>
                 <div key={q.question.id} style={{ padding: "5px 0" }}>
-                    <Question question={q.question.value} />
+                    <div style={{ fontWeight: "bold" }}><p>
+                        <EdiText type="text" value={q.question.value} onSave={handleSave} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover 
+                        canEdit={canEditQuiz != ""}
+                        />
+                    </p></div>
                     <div style={{ paddingLeft: "10px" }}>
                         {q.options.map((option) => {
                             return (
-                                <div key={option.id}>
-                                    <input type="radio" id={option.id.toString()} name={`question-${q.question.id}`} value={option.value} />
-                                    <label htmlFor={option.id.toString()} style={{ paddingLeft: "5px" }}>{option.value}</label>
+                                <div key={option.id} className="hc-input-label-container">
+                                    <input className="hc-input" type="radio" id={`option-${q.question.id}${option.id.toString()}`} name={`question-${q.question.id}`} value={option.value} />
+                                    <label className="hc-label" htmlFor={`option-${q.question.id}${option.id.toString()}${canEditQuiz}`} style={{ paddingLeft: "5px" }}>
+                                        <EdiText type="text" value={option.value} onSave={handleSave} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover />
+                                    </label>
                                 </div>
                             )
                         })}

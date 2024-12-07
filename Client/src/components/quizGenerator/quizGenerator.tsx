@@ -1,42 +1,51 @@
 import clsx from "clsx"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import sendQuizRequest from "./utils";
 
 export default function QuizGenerator(props: any) {
     const [ActiveTab, setActiveTab] = useState('data');
+    const [jobDescription, setJobDescription] = useState("test");
 
     const dataTabActive = clsx(ActiveTab === "data" ? 'hc-active' : "")
     const jobDescriptionTabActive = clsx(ActiveTab === "job" ? 'hc-active' : "")
     const cvTabActive = clsx(ActiveTab === "cv" ? 'hc-active' : "")
 
+    useEffect(() => {
+        console.log("Fetching job description");
+        fetch("http://localhost:5173/public/jobdescription.txt")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch the text file");
+                }
+                return response.text();
+            })
+            .then((data) => {
+                console.log(data);
+                setJobDescription(data)
+            })
+    }
+    , [])
+
     async function generateQuiz() {
-        const dataText = (document.querySelector("#tab-data .hc-textarea") as HTMLTextAreaElement).value;
-        const jobText = (document.querySelector("#tab-job .hc-textarea") as HTMLTextAreaElement).value;
-        const cvText = (document.querySelector("#tab-cv .hc-textarea") as HTMLTextAreaElement).value;
+        const formData = new FormData();
+        formData.append("context", (document.querySelector("#tab-data .hc-textarea") as HTMLTextAreaElement).value);
+        formData.append("jobDescription",(document.querySelector("#tab-job .hc-textarea") as HTMLTextAreaElement).value);
 
-        console.log("Data Tab Text:", dataText);
-        console.log("Job Description Tab Text:", jobText);
-        console.log("CV Tab Text:", cvText);
+        const fileInput = document.querySelector("#pdf_doc") as HTMLInputElement;
 
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        
+        if (fileInput?.files && fileInput.files[0]) {
+            formData.append("file", fileInput.files[0]);
+        }
 
-        const requestOptions: RequestInit = {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify({"context": dataText , "jobDescription": jobText, "cvData": cvText}),
-            redirect: "follow"
-        };
+        const response = await sendQuizRequest(formData);
 
-        await fetch("http://localhost:8000/generateQuiz", requestOptions)
-        .then((response) => response.text())
-        .then((resultText) => {
-            const result = JSON.parse(resultText);
-            console.log(result);
-            props.setQuizId(result.quiz_id);
-        })
-        .catch((error) => console.error(error))
-
-        // props.setQuizId("76190d4c-aadd-4607-b3fb-61575a34973f");
+        console.log(response);
+        debugger;
+        props.setQuizId(response.quizId);
+        props.setMatchingAttributes(response.matchingAtrubuted);
+        props.setuniqueAttributes(response.nonMatchingAtrubuted);
+        // props.setQuizId("530ba1eb-6968-4afc-b980-5da21c597c14");
 
     }
 
@@ -58,17 +67,23 @@ export default function QuizGenerator(props: any) {
 
                 <div id="tab-job" className={"hc-tab-content " + jobDescriptionTabActive}>
                     <div className="hc-section-title">Create Your Job Quiz</div>
-                    <textarea className="hc-textarea" placeholder="Enter your text here..."></textarea>
+                    <textarea className="hc-textarea" placeholder="Enter your text here..." value={jobDescription} onChange={(t) => setJobDescription(t.target.value)}></textarea>
                 </div>
 
                 <div id="tab-cv" className={"hc-tab-content " + cvTabActive}>
                     <div className="hc-section-title">Create Your CV Quiz</div>
-                    <textarea className="hc-textarea" placeholder="Enter your text here..."></textarea>
+                    {/* <textarea className="hc-textarea" placeholder="Enter your text here..."></textarea> */}
+                    <input type="file" name="pdf_doc" id="pdf_doc" accept=".pdf" className=" drop-shadow-md bg-white/10 font-semibold leading-6 text-gray-900 border border-blue-300 py-2 px-4 rounded-2xl block w-full text-sm text-slate-500
+                                                        file:mr-4 file:py-2 file:px-4
+                                                        file:rounded-full file:border-0
+                                                        file:text-sm file:font-semibold
+                                                        file:bg-blue-50 file:text-blue-400
+                                                        hover:file:bg-blue-100"></input>
                 </div>
             </div>
 
             <div className="hc-btn-row">
-                <button id="generate-quiz-btn" className="hc-generate-btn" onClick={()=>generateQuiz()}>Generate Quiz</button>
+                <button id="generate-quiz-btn" className="hc-generate-btn" onClick={() => generateQuiz()}>Generate Quiz</button>
             </div>
         </div>
     )

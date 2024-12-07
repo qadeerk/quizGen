@@ -2,8 +2,7 @@
 import json
 import os
 
-
-def SaveQuiz(quiz_uuid:str, data):
+def SaveQuiz(quiz_uuid:str, data,format="json"):
     print(f"Saving quiz with UUID: {quiz_uuid}")
     print(f"Data: {data}")
     # Create the Quizes folder if it doesn't exist
@@ -11,7 +10,7 @@ def SaveQuiz(quiz_uuid:str, data):
     os.makedirs(quizes_folder, exist_ok=True)
 
     # Define the file path
-    file_path = os.path.join(quizes_folder, f"{quiz_uuid}.json")
+    file_path = os.path.join(quizes_folder, f"{quiz_uuid}.{format}")
     print(f"File path: {file_path}")
     
     # Write the response to the file, overriding any existing content

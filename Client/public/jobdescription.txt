@@ -1,0 +1,56 @@
+Job description
+A Front-End Developer is responsible for building and maintaining the user-facing components of websites and web applications. They ensure seamless user experiences through clean, efficient, and responsive code. The role requires collaboration with designers, back-end developers, and other team members to bridge the gap between design and technical implementation.
+
+Responsibilities
+• Write clean, maintainable, and scalable code in HTML, CSS, and JavaScript.
+• Use design tools like Adobe Creative Suite (Photoshop, Illustrator, XD) or Figma.
+• Build and maintain responsive designs that function on all devices and browsers.
+• Work closely with UI/UX designers to implement design mockups into functional interfaces.
+• Optimize applications for performance, speed, and scalability.
+• Ensure websites and applications adhere to SEO best practices.
+• Conduct usability testing and ensure cross-browser compatibility.
+• Debug and fix code issues to maintain seamless user experiences.
+• Keep up with emerging trends in front-end development and modern web technologies.
+• Experiment with new tools, frameworks, and methodologies to improve development efficiency.
+• Document codebase clearly for future maintenance and teamwork.
+• Utilize version control systems (e.g., Git) for effective code management.
+
+Qualifications
+• Bachelor’s degree in Computer Science, Web Development, or a related field (or equivalent experience).
+• Proven experience in front-end development (portfolio or GitHub profile preferred).
+
+Skills Required
+• Proficiency in HTML5, CSS3, and JavaScript (ES6+).
+• Experience with frameworks/libraries such as React, Angular, or Vue.js.
+• Familiarity with CSS pre-processors like SASS or LESS.
+• Knowledge of version control systems like Git.
+• Strong problem-solving and analytical skills.
+• Ability to collaborate effectively with cross-functional teams.
+• Attention to detail and focus on user experience.
+• Experience in Containerization and CI/CD pipelines.
+• Experience in Agile development practices.
+
+Key Tools and Technologies
+• Frameworks/Libraries: React, Angular, Vue.js
+• Version Control: Git, GitHub, GitLab
+• Others: Figma, Adobe XD
+
+Benefits we offer:
+• Market-leading Salary
+• Medical Coverage
+• Employee Performance-based bonuses
+• Conveyance Allowance
+• Profit Sharing Plan [Tenured Employees Only]
+• Professional Development Budget
+• Friendly work environment
+• Leave Encashment
+
+Preferred Experience
+• 3+ years of front-end development experience.
+• Experience in Agile or Scrum development environments.
+
+Job Types: Full-time, Contract
+Contract length: 12 months
+
+Ability to commute/relocate:
+• Karachi: Reliably commute or planning to relocate before starting work (Required)

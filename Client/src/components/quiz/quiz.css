@@ -1,0 +1,30 @@
+
+/* ...existing code... */
+
+.hc-input-label-container {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.hc-input-label-container input {
+    order: 1;
+}
+
+.hc-input-label-container label {
+    order: 2;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.hc-input-label-container div[editext='edit-container'] {
+    flex-direction: row-reverse;
+}
+
+div[editext='edit-container'] {
+    flex-direction: row;
+}
+
+button[editext="edit-button"] {
+    opacity: 0;
+}
