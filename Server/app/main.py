@@ -52,10 +52,10 @@ async def generate_quiz(request: Request):
         cv_data = data.get("cvData")
         
         
-        # quiz = getCleanJson(factBasedQuizGenerationChain(context))
+        quiz = getCleanJson(factBasedQuizGenerationChain(context))
         # # Generate a UUID
         quiz_id = str(uuid.uuid4())
-        # SaveQuiz(quiz_id, quiz)
+        SaveQuiz(quiz_id, quiz)
 
         response = {}
         response["quiz_id"] = quiz_id
@@ -77,7 +77,6 @@ async def generate_quiz(
             # Save the uploaded file
             file_name = f"{quiz_id}.pdf"
             file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "uploads", file_name)
-            # f"{upload_folder}/{file.filename}"
             with open(file_path, "wb") as buffer:
                 shutil.copyfileobj(file.file, buffer)
         
