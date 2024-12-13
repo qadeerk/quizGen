@@ -16,9 +16,9 @@ from promptTemplates.FactTemplates.factExtraction import fact_extraction_templat
 from promptTemplates.FactTemplates.questionGeneration import question_generation_template
 from promptTemplates.FactTemplates.quizGeneration import quiz_generation_template
 
-from promptChain.utils.executionUtils import parallelExecution
-from promptChain.utils.jsonUtils import getCleanJson
-from promptChain.utils.jsonUtils import merge_questions_and_answers
+from utils.executionUtils import parallelExecution
+from utils.jsonUtils import getCleanJson
+from utils.jsonUtils import merge_questions_and_answers
 
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

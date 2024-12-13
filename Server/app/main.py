@@ -14,8 +14,8 @@ import pymupdf4llm
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from promptChain.factChain.chain import factBasedQuizGenerationChain
-from promptChain.utils.jsonUtils import getCleanJson
-from promptChain.utils.jsonUtils import getCleanMarkDownTable
+from utils.jsonUtils import getCleanJson
+from utils.jsonUtils import getCleanMarkDownTable
 from quizDb import SaveQuiz, GetQuiz
 
 from promptTemplates.matchingTemplates.matchingOverLappingData import overlaping_data_template
