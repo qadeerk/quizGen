@@ -1,18 +1,28 @@
 from langchain.prompts import PromptTemplate
-        
+
+# section extraction
+# Job Title
+# Job Summary
+# Key Responsibilities/Duties
+# Qualifications
+# Skills and Competencies
+# Experience Requirements
+# Working Conditions
+
+  
 quiz_generation_template = PromptTemplate(template="""
-    You are an interviewer who has to generate a list titles of different interview sections that the candidate will go through these sections will be evaluate different skills that are part of the job description.
-    keep the list consise and to the point
+    From the job description below extract the list of responsiblities, qualification, Skills , and job location, follow the below instructions
+    - for skills identify interpersonal skills also like teamwork, leadership 
     -----
     job Description: 
     {jobDescription}
     -----
     Format output in json 
     {
-        section1:[title], 
-        section2:[title],
-        section3:[title],
-        ...
+        responsiblities: {}, 
+        qualification:{},
+        Skills:{},
+        job location:{}
     }
 """
 ,input_variable=['jobDescription'])

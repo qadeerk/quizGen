@@ -29,16 +29,3 @@ llm = ChatOpenAI(model_name="gpt-4o-mini",
 actual_output= llm.invoke(question_generation_template.format(text="jon is 5 feet tall"),config={"callbacks": [langfuse_handler]})
 
 print(actual_output.content)
-
-# test_case = LLMTestCase(input=input, actual_output=actual_output)
-# metric = SummarizationMetric(
-#     threshold=0.5,
-#     model="gpt-4",
-#     assessment_questions=[
-#         "Is the coverage score based on a percentage of 'yes' answers?",
-#         "Does the score ensure the summary's accuracy with the source?",
-#         "Does a higher score mean a more comprehensive summary?"
-#     ]
-# )
-
-# evaluate([test_case], [metric])
