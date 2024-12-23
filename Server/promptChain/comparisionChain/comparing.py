@@ -15,9 +15,9 @@ import json
 from promptTemplates.matchingTemplates.matchingOverLappingData import overlaping_data_template
 from promptTemplates.matchingTemplates.matchingOverLappingData import non_overlaping_job_description_template
 
-from promptChain.utils.executionUtils import parallelExecution
-from promptChain.utils.jsonUtils import getCleanJson
-from promptChain.utils.jsonUtils import merge_questions_and_answers
+from utils.executionUtils import parallelExecution
+from utils.jsonUtils import getCleanJson
+from utils.jsonUtils import merge_questions_and_answers
 
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

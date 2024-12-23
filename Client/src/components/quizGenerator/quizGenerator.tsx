@@ -43,8 +43,8 @@ export default function QuizGenerator(props: any) {
         console.log(response);
         debugger;
         props.setQuizId(response.quizId);
-        props.setMatchingAttributes(response.matchingAtrubuted);
-        props.setuniqueAttributes(response.nonMatchingAtrubuted);
+        props.setMatchingAttributes(response.matchingAtrubuted.replace(/\n/g, ''));
+        props.setuniqueAttributes(response.nonMatchingAtrubuted.replace(/\n/g, ''));
         // props.setQuizId("530ba1eb-6968-4afc-b980-5da21c597c14");
 
     }

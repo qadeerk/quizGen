@@ -1,0 +1,7 @@
+[
+    {
+        "Name": "EmptyInput",
+        "Input": "",
+        "ExpectedOutout": "EmptyInput"
+    }
+]

@@ -1,0 +1,7 @@
+tests:
+  - name: test_api_endpoint
+    enabled: true
+  - name: test_data_integrity
+    enabled: false
+  - name: test_performance
+    enabled: true

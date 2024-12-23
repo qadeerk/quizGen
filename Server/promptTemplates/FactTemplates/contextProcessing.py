@@ -1,12 +1,12 @@
 from langchain.prompts import PromptTemplate
 
 #  if the document is very big it would be a good idea to break the document into smaller parts and then extract facts from each part. This will help in coverage of the segments.
-quiz_generation_template = PromptTemplate(template="""
-    break the following text into smaller none overlaping sections and generate a list of sections, assign a title to each section that best describes the content of the section
+context_classification_template = PromptTemplate(template="""
+    classify the below text into three different types paragraphs with no headings, heading with short description, heading with long description
     -----
     text: {text}
     -----
-    Format output in object that can be parsed in json
+    output should be only three
     [
         [section Title]:[text], 
         [section Title]:[text],
@@ -15,3 +15,4 @@ quiz_generation_template = PromptTemplate(template="""
     ]
 """
 ,input_variable=['text'])
+

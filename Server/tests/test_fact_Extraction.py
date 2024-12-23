@@ -8,10 +8,9 @@ from deepeval.test_case import LLMTestCase
 from deepeval import evaluate
 from deepeval.metrics import SummarizationMetric
 from langchain_openai import ChatOpenAI
-from getProperty import load_api_key
 from promptTemplates.FactTemplates.factExtraction import fact_extraction_template
 from dotenv import load_dotenv
-
+from langfuse.callback import CallbackHandler
 
 # Load the .env file
 load_dotenv()
@@ -31,7 +30,7 @@ encapsulates the crucial points and details from the original content.
 """
 
 # This is the summary, replace this with the actual output from your LLM application
-actual_output= llm.invoke(fact_extraction_template.format(text=input)).content
+actual_output= llm.invoke(fact_extraction_template.format(text=input),config={"callbacks": [langfuse_handler]}).content
 
 print(actual_output)
 
@@ -46,4 +45,4 @@ metric = SummarizationMetric(
     ]
 )
 
-evaluate([test_case], [metric])
+print(evaluate([test_case], [metric]));
