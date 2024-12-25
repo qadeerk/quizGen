@@ -85,6 +85,33 @@ def merge_questions_and_answers(correct_answers, false_answers) -> json:
     return json.dumps(merged_data, indent=4)
 
 
+import json
+
+def parse_json_markdown(json_string: str) -> dict:
+    # Remove the triple backticks if present
+    json_string = json_string.strip()
+    start_index = json_string.find("```json")
+    end_index = json_string.find("```", start_index + len("```json"))
+
+    if start_index != -1 and end_index != -1:
+        extracted_content = json_string[start_index + len("```json"):end_index].strip()
+        
+        # Parse the JSON string into a Python dictionary
+        parsed = json.loads(extracted_content)
+    elif start_index != -1 and end_index == -1 and json_string.endswith("``"):
+        end_index = json_string.find("``", start_index + len("```json"))
+        extracted_content = json_string[start_index + len("```json"):end_index].strip()
+        
+        # Parse the JSON string into a Python dictionary
+        parsed = json.loads(extracted_content)
+    elif json_string.startswith("{"):
+        # Parse the JSON string into a Python dictionary
+        parsed = json.loads(json_string)
+    else:
+        raise Exception("Could not find JSON block in the output.")
+
+    return parsed
+
 # Data from the two nodes
 correct_answers = [
     {'Question': 'What does Object-Oriented Programming (OOP) focus on in software design?', 'Answer': 'OOP focuses on organizing software design around data or objects.'},
@@ -104,4 +131,4 @@ markdown= """```markdown\n| Job Requirement                                     
 # print(merged_json)
 
 # merged_json = merge_questions_and_answers(correct_answers, false_answers)
-print(getCleanMarkDownTable(markdown))
+# print(getCleanMarkDownTable(markdown))

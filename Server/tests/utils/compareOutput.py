@@ -1,6 +1,6 @@
 from deepeval.metrics import BaseMetric
 from deepeval.test_case import LLMTestCase
-
+from .sentenceSimilarityUtils import calculate_similarity
 
 def generate_hypothetical_score(test_case: LLMTestCase) -> float:
     # This is a hypothetical function that generates a score
@@ -8,27 +8,27 @@ def generate_hypothetical_score(test_case: LLMTestCase) -> float:
     print(test_case.input)
     print(test_case.actual_output)
     print(test_case.expected_output)
-    return 1
+    return calculate_similarity(test_case.actual_output, test_case.expected_output)
 
 def generate_hypothetical_reason(test_case: LLMTestCase) -> str:
     # This is a hypothetical function that generates a reason
     # based on the test case input and output
-    return "This is a hypothetical reason"
+    return "reasoning not implemented"
 
 async def async_generate_hypothetical_score(test_case: LLMTestCase) -> float:
+    # This is a hypothetical function that generates a score
+    # based on the test case input and output
     print(test_case.input)
     print(test_case.actual_output)
     print(test_case.expected_output)
-    # This is a hypothetical function that generates a score
-    # based on the test case input and output
-    return 1
+    return calculate_similarity(test_case.actual_output, test_case.expected_output)
 
 async def async_generate_hypothetical_reason(test_case: LLMTestCase) -> str:    
     # This is a hypothetical function that generates a reason
     # based on the test case input and output
-    return "This is a hypothetical reason"
+    return "reasoning not implemented"
 
-class similarityScoreMetric(BaseMetric):
+class JsonSimilarityScoreMetric(BaseMetric):
     def __init__(
         self,
         threshold: float = 0.5,

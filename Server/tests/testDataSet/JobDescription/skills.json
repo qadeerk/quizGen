@@ -1,0 +1,29 @@
+[
+    {
+        "fileName":"frontendDev_1.txt",
+        "input":"input",
+        "actualOutput":"actualOutput",
+        "expectedOutput": [
+            {
+                "category": "Tools",
+                "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]
+            },
+            {
+                "category": "Frameworks",
+                "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]
+            },
+            {
+                "category": "Technologies",
+                "skills": ["JavaScript", "HTML", "CSS"]
+            },
+            {
+                "category": "Interpersonal/Transferable",
+                "skills": ["Problem-solving", "Troubleshooting", "Strong verbal communication", "Strong written communication", "Collaboration", "Teamwork"]
+            },
+            {
+                "category": "Managerial",
+                "skills": ["Scrum", "Agile development"]
+            }
+        ]
+    }
+]

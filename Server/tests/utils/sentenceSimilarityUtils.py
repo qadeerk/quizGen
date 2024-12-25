@@ -18,5 +18,5 @@ sentence1 = "The quick brown fox jumps over the lazy dog."
 sentence2 = "A fast dark-colored fox leaps over a sleeping dog."
 
 # Calculate and display similarity
-similarity_score = calculate_similarity(sentence1, sentence2)
-print(f"Similarity score: {similarity_score:.4f}")
+# similarity_score = calculate_similarity(sentence1, sentence2)
+# print(f"The similarity score between the two sentences is: {similarity_score}")
