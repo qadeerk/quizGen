@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LLM Comparison Report</title>
+
+    <!-- Example: Importing Google Fonts -->
+    <!-- You can update or add more fonts as desired -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet"
+    />
+
+    <style>
+        /* Global styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        /* Container to hold all content with a max width */
+        .container {
+            max-width: 100%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Heading styles */
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            margin: 0 0 10px;
+            color: #1f2937;
+        }
+        h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            margin: 0 0 20px;
+            color: #4b5563;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 1; /* ensures header remains on top when scrolling */
+        }
+
+        thead tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed; /* ensures columns align with tbody */
+        }
+
+        thead th {
+            font-weight: 500;
+            padding: 12px 15px;
+            text-align: left;
+            color: #374151;
+            cursor: pointer; /* indicate columns are clickable for sorting */
+            user-select: none;
+        }
+
+        /* Scrollable table body with fixed row height */
+        tbody {
+            display: block;
+            max-height: 250px; /* Adjust as needed for your layout */
+            overflow-y: auto; /* Make the table body scrollable */
+        }
+
+        tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            height: 50px; /* Fixed row height, adjust as needed */
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: middle;
+        }
+
+        /* Fix column widths if desired (optional) */
+        th:nth-child(1), td:nth-child(1) {
+            width: 15%;
+        }
+        th:nth-child(2), td:nth-child(2) {
+            width: 10%;
+        }
+        th:nth-child(3), td:nth-child(3) {
+            width: 10%;
+        }
+        th:nth-child(4), td:nth-child(4) {
+            width: 30%;
+        }
+        th:nth-child(5), td:nth-child(5) {
+            width: 30%;
+        }
+        /* Modify or add more columns as needed */
+
+        /* Hover effect on table rows (optional) */
+        tbody tr:hover {
+            background-color: #e5e7eb;
+        }
+
+        /* Indicators for sort direction */
+        .sort-indicator {
+            margin-left: 0.5em;
+            font-size: 0.8em;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Test Case Name and Prompt -->
+        <h1>Test Case: {{ test_name }}</h1>
+        <h3>Prompt: {{ prompt }}</h3>
+
+        <!-- Report Table -->
+        <table id="comparisonTable">
+            <thead>
+                <tr>
+                    <!-- 
+                      Add 'data-type' attribute if you need numeric/boolean vs. string sorting 
+                      e.g., data-type="numeric" or data-type="string"
+                    -->
+                    <th class="sortable" data-type="string">Model Name</th>
+                    <th class="sortable" data-type="numeric">Score</th>
+                    <th class="sortable" data-type="numeric">Cost</th>
+                    <th class="sortable" data-type="string">Actual Output</th>
+                    <th class="sortable" data-type="string">Expected Output</th>
+                    <!-- Add more headers here if needed, with class="sortable" and data-type -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.model_name }}</td>
+                    <td>{{ result.score }}</td>
+                    <td>{{ result.cost }}</td>
+                    <td>{{ result.actual_output }}</td>
+                    <td>{{ result.expected_output }}</td>
+                    <!-- Add more columns here if needed -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- JavaScript for Sorting Functionality -->
+    <script>
+        (function() {
+            const table = document.getElementById('comparisonTable');
+            const headers = table.querySelectorAll('thead th.sortable');
+
+            // Attach click event to each sortable header
+            headers.forEach((header, index) => {
+                // Store current sort order in a data attribute
+                header.dataset.sortOrder = 'none'; 
+                header.addEventListener('click', () => {
+                    sortTableByColumn(table, index, header);
+                });
+            });
+
+            /**
+             * Sorts the table by a specified column index.
+             * @param {HTMLTableElement} table - The table to sort
+             * @param {number} columnIndex - The index of the column to sort by
+             * @param {HTMLElement} header - The header element clicked
+             */
+            function sortTableByColumn(table, columnIndex, header) {
+                const tbody = table.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                const type = header.dataset.type || 'string';
+                
+                // Determine current sort order and toggle it
+                let currentOrder = header.dataset.sortOrder;
+                let newOrder = (currentOrder === 'asc') ? 'desc' : 'asc';
+                header.dataset.sortOrder = newOrder;
+
+                // Clear sort indicators in all headers except this one
+                headers.forEach(h => {
+                    if (h !== header) {
+                        h.dataset.sortOrder = 'none';
+                        h.innerHTML = h.innerHTML.replace(/<span class="sort-indicator">.*<\/span>/, '');
+                    }
+                });
+
+                // Sort logic
+                rows.sort((a, b) => {
+                    const cellA = a.querySelectorAll('td')[columnIndex].innerText.trim();
+                    const cellB = b.querySelectorAll('td')[columnIndex].innerText.trim();
+
+                    // Convert to numeric if data-type="numeric" and possible
+                    let valA = (type === 'numeric') ? parseFloat(cellA) : cellA;
+                    let valB = (type === 'numeric') ? parseFloat(cellB) : cellB;
+
+                    // Fallback for non-parsable numeric values
+                    if (type === 'numeric') {
+                        if (isNaN(valA)) valA = 0;
+                        if (isNaN(valB)) valB = 0;
+                    }
+
+                    if (valA < valB) return (newOrder === 'asc') ? -1 : 1;
+                    if (valA > valB) return (newOrder === 'asc') ? 1 : -1;
+                    return 0;
+                });
+
+                // Remove existing rows and re-append in sorted order
+                rows.forEach(row => tbody.appendChild(row));
+
+                // Update the header text with a sort indicator
+                const arrow = (newOrder === 'asc') ? '▲' : '▼';
+                const baseText = header.innerText.replace(/[▲▼]/g, '').trim();
+                header.innerHTML = baseText + `<span class="sort-indicator">${arrow}</span>`;
+            }
+        })();
+    </script>
+</body>
+</html>

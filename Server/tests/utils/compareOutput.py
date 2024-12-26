@@ -1,6 +1,14 @@
+import os
+import sys
+
+# Add the parent directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add the 'tests' directory to the Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from deepeval.metrics import BaseMetric
 from deepeval.test_case import LLMTestCase
-from .sentenceSimilarityUtils import calculate_similarity
+from sentenceSimilarityUtils import calculate_similarity  # Absolute import
 
 def generate_hypothetical_score(test_case: LLMTestCase) -> float:
     # This is a hypothetical function that generates a score

@@ -14,6 +14,7 @@ from utils.execution_cost_test import get_execution_cost
 from utils.dataset import GetDataset , GetHidratedDataset, Dataset_path , Dataset_type
 from utils.compareOutput import JsonSimilarityScoreMetric
 from utils.jsonUtils import parse_json_markdown
+from utils.generateReport import generate_basic_report
 
 from deepeval.test_case import LLMTestCase
 from deepeval import  evaluate
@@ -32,12 +33,11 @@ class SkillsList(RootModel[List[Skills]]):
     pass
 
 def test_jobDescription(llms,dataset,schema):
+    results = []
     for llm in llms:
         for item in dataset:
             response = get_execution_cost(llm, skill_Extraction_template.format(jobDescription=item["input"]))
-            actual_output = parse_json_markdown(response["output"])
-            print(actual_output)
-            # responce output is markdown json 
+            actual_output = parse_json_markdown(response["output"]) # responce output is markdown json this outputs 
             test_case = LLMTestCase(input=item["input"], actual_output=json.dumps(actual_output), expected_output=json.dumps(item["expectedOutput"]))
             JsonCorrectness_metric = JsonCorrectnessMetric(expected_schema=schema,include_reason=False,verbose_mode=False)
             JsonSimilarityScore_metric = JsonSimilarityScoreMetric(include_reason=False,async_mode=False)
@@ -46,12 +46,24 @@ def test_jobDescription(llms,dataset,schema):
             print(llm.model_name)
             print(response["output"])
             print(response['total_cost'])
-            print(f"test results : {test_assertion.test_results}")
+            print(f"test results : {test_assertion.test_results}") 
+            print(f"Json Similaroty Score : {test_assertion.test_results[0].metrics_data[1].score}") #["metrics_data"]
             # print(f"Was test sucessfull : {test_assertion.test_results[0].success}")
             print("------------------")
+            results.append({
+                "model_name": llm.model_name,
+                "score": test_assertion.test_results[0].metrics_data[1].score,
+                "cost": response['total_cost'],
+                "actual_output": json.dumps(actual_output),
+                "expected_output": json.dumps(item["expectedOutput"])
+            })
+    return {
+        "test_name": "Job Description Skill Extraction Test",
+        "prompt": skill_Extraction_template.template,
+        "results" : results
+    }
 
 dataset = GetHidratedDataset(Dataset_path.JOB_DESCRIPTION.value, Dataset_type.JOB_DESCRIPTION_DEFAULT.value)
 llms = getOpenAIModelList()
 
-# print(dataset)
-test_jobDescription(llms,dataset,SkillsList)
+generate_basic_report(data=test_jobDescription(llms,dataset,SkillsList))

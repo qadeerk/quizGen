@@ -12,7 +12,7 @@ gpt3_turbo = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
 ChatAnthropicllm = ChatAnthropic(model_name="gpt-4", temperature=0)
 
 def getOpenAIModelList():
-    return [gpt4_mini]
+    # return [gpt4_mini]
     return [gpt3_turbo, gpt4_mini]
 
 def getModelList():

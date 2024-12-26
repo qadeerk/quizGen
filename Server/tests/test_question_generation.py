@@ -9,8 +9,8 @@ from deepeval import evaluate
 from deepeval.metrics import SummarizationMetric
 from langchain_openai import ChatOpenAI
 from promptTemplates.FactTemplates.questionGeneration import question_generation_template
-from dotenv import load_dotenv
 from langfuse.callback import CallbackHandler
+from dotenv import load_dotenv
 
 # Load the .env file
 load_dotenv()

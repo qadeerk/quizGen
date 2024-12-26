@@ -84,9 +84,6 @@ def merge_questions_and_answers(correct_answers, false_answers) -> json:
     
     return json.dumps(merged_data, indent=4)
 
-
-import json
-
 def parse_json_markdown(json_string: str) -> dict:
     # Remove the triple backticks if present
     json_string = json_string.strip()
@@ -104,10 +101,11 @@ def parse_json_markdown(json_string: str) -> dict:
         
         # Parse the JSON string into a Python dictionary
         parsed = json.loads(extracted_content)
-    elif json_string.startswith("{"):
+    elif json_string.startswith("{") or json_string.startswith("["):
         # Parse the JSON string into a Python dictionary
         parsed = json.loads(json_string)
     else:
+        print(json_string)
         raise Exception("Could not find JSON block in the output.")
 
     return parsed
