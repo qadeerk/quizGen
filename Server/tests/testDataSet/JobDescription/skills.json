@@ -1,8 +1,6 @@
 [
     {
         "fileName":"frontendDev_1.txt",
-        "input":"input",
-        "actualOutput":"actualOutput",
         "expectedOutput": [
             {
                 "category": "Tools",
@@ -26,4 +24,5 @@
             }
         ]
     }
+    
 ]

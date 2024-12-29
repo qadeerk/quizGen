@@ -1,6 +1,6 @@
 
 
-export const QuizLayout  = (props:any) => {
+export const QuizLayout  = () => {
     return <div id="quizLayout">
         hello from QuizLayout
     </div>

@@ -1,14 +1,13 @@
-import Question from "../question/question"
 import { QuizT } from "../../types/quiz"
 import { useEffect, useState } from "react"
 import { sampleQuiz } from "../../contexts/getSampleQuiz"
 import EdiText from 'react-editext'
 import "./quiz.css";
 
-const localCache: { [key: number]: QuizT[] } = {};
+const localCache: { [key: string]: QuizT[] } = {};
 
 interface IQuizProps {
-    id: number
+    id: string
 }
 
 export const Quiz: React.FC<IQuizProps> = (props: IQuizProps) => {
@@ -28,12 +27,12 @@ export const Quiz: React.FC<IQuizProps> = (props: IQuizProps) => {
             setStatus("loaded")
         }
 
-        async function requestQuiz(id: number) {
+        async function requestQuiz(id: String) {
             const response = await fetch(`http://localhost:8000/getQuiz?id=${id}`)
             const json = await response.json()
             console.log(json)
             setQuizCollection(json);
-            localCache[id] = json;
+            // localCache[id] = json;
         }
 
     }, [])
@@ -49,7 +48,7 @@ export const Quiz: React.FC<IQuizProps> = (props: IQuizProps) => {
     }
 
     return (
-        <div className="hc-container">
+        (status == "loaded" && <div className="hc-container">
             <button id="edit-quiz-btn" className="hc-generate-btn" style={{ float: "right", marginLeft: "20px" }} onClick={() => alert("Work to be done")}>publish</button>
             <button id="edit-quiz-btn" className="hc-generate-btn" onClick={toggleEdit} style={{ float: "right" }}>{canEditQuiz === "" ? "Edit" : "View"}</button>
             {quizCollection.map(q =>
@@ -73,7 +72,7 @@ export const Quiz: React.FC<IQuizProps> = (props: IQuizProps) => {
                     </div>
                 </div>
             )}
-        </div>
+        </div>)
     )
 
 }             
