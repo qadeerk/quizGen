@@ -1,0 +1,59 @@
+[
+  {
+    "Input": "# Functional Programming Basics\nFunctional programming is a style of programming that treats computation as the evaluation of mathematical functions. It avoids changing state and mutable data. \n## Immutability\nIn functional programming, once a value is created, it cannot be modified. This makes the programs easier to understand and debug.\n### Pure Functions\nPure functions return the same result given the same input and have no side effects. They promote predictable code.",
+    "ExpectedOutput": [
+      "Functional programming is a style of programming that treats computation as the evaluation of mathematical functions.",
+      "It avoids changing state and mutable data.",
+      "In functional programming, once a value is created, it cannot be modified.",
+      "Pure functions return the same result given the same input and have no side effects.",
+      "Pure functions promote predictable code."
+    ]
+  },
+  {
+    "Input": "# Object-Oriented Programming\nObject-oriented programming (OOP) organizes software design around objects rather than functions or logic. Objects represent real-world entities.\n## Key Features\n1. **Encapsulation**: Bundles the data and the methods that operate on the data within objects.\n2. **Inheritance**: Allows a class to inherit the properties and methods of another class.\n3. **Polymorphism**: Lets one interface be used for a general class of actions.\n### Challenges\nOOP can lead to complex hierarchies and tightly coupled code, making it harder to refactor and scale.",
+    "ExpectedOutput": [
+      "Object-oriented programming (OOP) organizes software design around objects rather than functions or logic.",
+      "Objects represent real-world entities.",
+      "Encapsulation bundles the data and the methods that operate on the data within objects.",
+      "Inheritance allows a class to inherit the properties and methods of another class.",
+      "Polymorphism lets one interface be used for a general class of actions.",
+      "OOP can lead to complex hierarchies and tightly coupled code, making it harder to refactor and scale."
+    ]
+  },
+  {
+    "Input": "# Recursion in Programming\nRecursion is a technique where a function calls itself to solve smaller instances of a problem. It is widely used for tasks like tree traversal and factorial calculation.\n## Advantages\n- Simplifies code for problems like traversing hierarchical data.\n- Reduces the need for explicit loops.\n### Disadvantages\n- Recursive functions can be memory-intensive due to call stack usage.\n- They may lead to stack overflow errors for deep recursion.",
+    "ExpectedOutput": [
+      "Recursion is a technique where a function calls itself to solve smaller instances of a problem.",
+      "Recursion is widely used for tasks like tree traversal and factorial calculation.",
+      "Recursion simplifies code for problems like traversing hierarchical data.",
+      "Recursion reduces the need for explicit loops.",
+      "Recursive functions can be memory-intensive due to call stack usage.",
+      "Recursive functions may lead to stack overflow errors for deep recursion."
+    ]
+  },
+  {
+    "Input": "# Agile Methodology\nAgile is a software development methodology focused on iterative development and collaboration. \n## Principles\n1. **Customer Collaboration**: Emphasizes working closely with customers.\n2. **Responding to Change**: Flexible and adaptive to changing requirements.\n### Benefits\n- Encourages quick delivery of working software.\n- Promotes communication and transparency.\n### Drawbacks\n- May lack long-term vision due to iterative focus.\n- Can lead to scope creep if requirements constantly change.",
+    "ExpectedOutput": [
+      "Agile is a software development methodology focused on iterative development and collaboration.",
+      "Agile emphasizes working closely with customers.",
+      "Agile is flexible and adaptive to changing requirements.",
+      "Agile encourages quick delivery of working software.",
+      "Agile promotes communication and transparency.",
+      "Agile may lack long-term vision due to iterative focus.",
+      "Agile can lead to scope creep if requirements constantly change."
+    ]
+  },
+  {
+    "Input": "# Cloud Computing\nCloud computing is the delivery of computing services like servers, storage, databases, and software over the internet.\n## Deployment Models\n1. **Public Cloud**: Services are offered over the internet and shared among multiple users.\n2. **Private Cloud**: Dedicated to a single organization, offering greater control and privacy.\n3. **Hybrid Cloud**: Combines public and private cloud features for flexibility.\n### Benefits\n- Cost-effective with pay-as-you-go pricing.\n- Scalable and accessible from anywhere.\n### Challenges\n- Security and compliance concerns.\n- Dependence on internet connectivity.",
+    "ExpectedOutput": [
+      "Cloud computing is the delivery of computing services like servers, storage, databases, and software over the internet.",
+      "Public cloud services are offered over the internet and shared among multiple users.",
+      "Private cloud is dedicated to a single organization, offering greater control and privacy.",
+      "Hybrid cloud combines public and private cloud features for flexibility.",
+      "Cloud computing is cost-effective with pay-as-you-go pricing.",
+      "Cloud computing is scalable and accessible from anywhere.",
+      "Cloud computing faces security and compliance concerns.",
+      "Cloud computing relies on internet connectivity."
+    ]
+  }
+]

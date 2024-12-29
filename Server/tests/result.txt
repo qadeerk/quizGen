@@ -1,0 +1,62 @@
+[
+    "OOP organizes software design around objects rather than functions or logic",
+    "Key Features: Encapsulation, Inheritance, Polymorphism",
+    "Challenges: OOP can lead to complex hierarchies and tightly coupled code"
+]
+$0.0001685
+True
+[
+    "Recursion is a technique where a function calls itself to solve smaller instances of a problem.",
+    "Recursion is widely used for tasks like tree traversal and factorial calculation.",
+    "Advantages of recursion include simplifying code for problems like traversing hierarchical data and reducing the need for explicit loops.",
+    "Disadvantages of recursion include being memory-intensive due to call stack usage and the potential for stack overflow errors for deep recursion."
+]
+$0.0002115
+True
+[
+    "Agile is a software development methodology focused on iterative development and collaboration.",
+    "Principle of Agile methodology include customer collaboration and responding to change.",
+    "Benefits of Agile methodology include quick delivery of working software and promoting communication and transparency."
+]
+$0.000156
+False
+[
+    "Cloud computing is the delivery of computing services over the internet",
+    "Deployment models include public cloud, private cloud, and hybrid cloud",
+    "Benefits include cost-effectiveness, scalability, and accessibility"
+]
+$0.000156
+False
+--------gpt-4o-mini--------
+[
+    "Functional programming treats computation as the evaluation of mathematical functions.",
+    "Functional programming avoids changing state and mutable data.",
+    "In functional programming, once a value is created, it cannot be modified.",
+    "Pure functions return the same result given the same input and have no side effects.",
+    "Pure functions promote predictable code."
+]
+$0.0000639
+True
+[
+    "Object-oriented programming (OOP) organizes software design around objects representing real-world entities.",
+    "Key features of OOP include encapsulation, inheritance, and polymorphism.",
+    "OOP can lead to complex hierarchies and tightly coupled code, making it harder to refactor and scale."
+]
+$0.00006555
+True
+[
+    "Recursion is a technique where a function calls itself to solve smaller instances of a problem.",
+    "It is widely used for tasks like tree traversal and factorial calculation.",
+    "Advantages include simplifying code for hierarchical data and reducing the need for explicit loops.",
+    "Disadvantages include being memory-intensive and the potential for stack overflow errors."
+]
+$0.0000651
+True
+[
+    "Agile is a software development methodology focused on iterative development and collaboration.",
+    "Key principles include customer collaboration and responding to change.",
+    "Benefits of Agile include quick delivery of working software and promotion of communication and transparency.",
+    "Drawbacks include potential lack of long-term vision and risk of scope creep due to changing requirements."
+]
+$0.00006585
+True

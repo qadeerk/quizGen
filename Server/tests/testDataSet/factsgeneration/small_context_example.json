@@ -1,0 +1,35 @@
+[
+  {
+    "Input": "Functional programming treats functions as first-class citizens.",
+    "ExpectedOutput": 
+      "Functional programming treats functions as first-class citizens."
+    
+  },
+  {
+    "Input": "Pure functions have no side effects and rely only on inputs.",
+    "ExpectedOutput": 
+      "Pure functions have no side effects.Pure functions rely only on inputs."
+    
+  },
+  {
+    "Input": "Blockchain ensures secure transactions with cryptographic techniques.",
+    "ExpectedOutput": "Blockchain ensures secure transactions. Blockchain uses cryptographic techniques."
+    
+  },
+  {
+    "Input": "AI systems can analyze images and recognize patterns.",
+    "ExpectedOutput": "AI systems can analyze images.AI systems recognize patterns."
+    
+  },
+  {
+    "Input": "Cybersecurity prevents unauthorized access to sensitive data.",
+    "ExpectedOutput": "Cybersecurity prevents unauthorized access. Cybersecurity protects sensitive data."
+    
+  },
+  {
+    "Input": "Machine learning improves predictions by learning from data.",
+    "ExpectedOutput": "Machine learning improves predictions.Machine learning learns from data."
+    
+  }
+
+]

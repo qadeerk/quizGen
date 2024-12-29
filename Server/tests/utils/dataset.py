@@ -6,11 +6,16 @@ class Dataset_path(Enum):
     # Define your dataset enums here
     QUESTION_GENERATION = "testDataSet/questionGeneration"
     JOB_DESCRIPTION = "testDataSet/JobDescription"
+    FACT_GENERATION="testDataSet/factsgeneration"
     
 class Dataset_type(Enum):
     # Define your dataset enums here
     QUESTION_GENERATION_SMALL = "small"
     JOB_DESCRIPTION_DEFAULT = "skills"
+    FACT_GENERATION_SMALL="oop_small"
+    FACT_GENERATION_WITH_HEADING="context_with_heading"
+    FACT_GENERATION_WITH_LARGER_CONTEXT="larger_context_examples"
+    FACT_GENERATION_WITH_SMALLER_CONTEXT="small_context_example"
 
 def GetJsonFileContent(file_path):
     try:

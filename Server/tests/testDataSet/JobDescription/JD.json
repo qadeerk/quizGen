@@ -1,0 +1,11 @@
+[
+    {
+        "fileName":"FrontDev",
+        "expectedOutput": {
+            "responsiblities": "Frontend Developer expected",
+            "qualification": "Frontend Developer expected",
+            "Skills": "Frontend Developer expected",
+            "jobLocation": "Frontend Developer expected"
+        }
+    }
+]

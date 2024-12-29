@@ -81,10 +81,10 @@ async def generate_quiz(
                 shutil.copyfileobj(file.file, buffer)
         
         cvDataMd = pymupdf4llm.to_markdown(file_path)
-        # SaveQuiz(quiz_id, cvDataMd, "md")
-        # quiz = getCleanJson(factBasedQuizGenerationChain(context))
-        # # Generate a UUID
-        # SaveQuiz(quiz_id, quiz)
+        SaveQuiz(quiz_id, cvDataMd, "md")
+        quiz = getCleanJson(factBasedQuizGenerationChain(context))
+        # Generate a UUID
+        SaveQuiz(quiz_id, quiz)
         
         matchingAtrubuted = getCleanMarkDownTable(model.invoke(overlaping_data_template.format(jobDescription=jobDescription,cvData=cvDataMd)).content)
         nonMatchingAtrubuted = getCleanMarkDownTable(model.invoke(non_overlaping_job_description_template.format(jobDescription=jobDescription,cvData=cvDataMd)).content)
@@ -94,7 +94,7 @@ async def generate_quiz(
         return JSONResponse(
         content={
             "message": "Data and file uploaded successfully",
-            "quizId": "6c2e757d-aca6-42d3-b4e5-9d9d4fbfad39",
+            "quizId": quiz_id,
             "matchingAtrubuted": matchingAtrubuted,
             "nonMatchingAtrubuted": nonMatchingAtrubuted,
             "filename": file.filename,

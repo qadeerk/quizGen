@@ -1,0 +1,60 @@
+[
+    {
+      "Input": "Object-Oriented Programming (OOP) is a programming paradigm based on the concept of objects, which are instances of classes. Classes serve as blueprints for creating objects, and they define the properties (also called attributes) and methods (also called functions) that objects will have. In OOP, objects interact with each other by calling each other’s methods. This allows for the reuse of code and greater flexibility in managing large systems. A class can be thought of as a template, and when an object is created, it inherits the properties and methods defined in the class. One of the key features of OOP is inheritance, which allows a new class to adopt the properties and methods of an existing class. This promotes code reusability and helps in creating hierarchical relationships between classes. Another important concept in OOP is encapsulation, which means that the internal workings of an object are hidden from the outside world, providing a clear interface for interaction.",
+      "ExpectedOutput": [
+        "Object-Oriented Programming (OOP) is based on the concept of objects, which are instances of classes.",
+        "Classes define properties (attributes) and methods (functions) that objects will have.",
+        "Objects interact with each other by calling each other’s methods.",
+        "Inheritance allows a new class to adopt the properties and methods of an existing class.",
+        "Encapsulation hides the internal workings of an object and provides a clear interface for interaction."
+      ]
+    },
+    {
+      "Input": "In web development, HTML (HyperText Markup Language) is used to structure content on the web. HTML defines the elements of a web page, such as headings, paragraphs, links, images, and forms. These elements are represented by tags, which tell the web browser how to display the content. CSS (Cascading Style Sheets) is used to style the HTML elements, such as setting the colors, fonts, layouts, and spacing. JavaScript adds interactivity to a web page. It allows developers to respond to user actions like clicks, form submissions, and keyboard events. JavaScript can also be used to dynamically update the content of a page without requiring a reload. A modern JavaScript framework, such as React, Angular, or Vue, can further simplify the process of building dynamic web applications by providing tools for managing state, routing, and building reusable components.",
+      "ExpectedOutput": [
+        "HTML (HyperText Markup Language) is used to structure content on the web.",
+        "HTML defines elements of a web page such as headings, paragraphs, links, images, and forms.",
+        "CSS (Cascading Style Sheets) is used to style HTML elements.",
+        "JavaScript adds interactivity to a web page.",
+        "JavaScript can dynamically update the content of a page without requiring a reload.",
+        "Modern JavaScript frameworks like React, Angular, or Vue simplify building dynamic web applications."
+      ]
+    },
+    {
+      "Input": "In database systems, normalization is the process of organizing data to reduce redundancy and dependency. The goal of normalization is to ensure that data is stored efficiently, and that the relationships between data items are logical. The process involves dividing a database into two or more tables and defining relationships between the tables to eliminate duplication of data. Normalization typically involves several stages, known as normal forms, each of which imposes certain rules on the database structure. First normal form (1NF) ensures that each column contains only atomic values, second normal form (2NF) ensures that all non-key attributes are fully functionally dependent on the primary key, and third normal form (3NF) removes transitive dependencies. Through these stages, normalization helps maintain data integrity and reduces the risk of data anomalies.",
+      "ExpectedOutput": [
+        "Normalization is the process of organizing data to reduce redundancy and dependency.",
+        "The goal of normalization is to ensure data is stored efficiently and that relationships between data items are logical.",
+        "Normalization involves dividing a database into two or more tables and defining relationships between them to eliminate data duplication.",
+        "Normalization has several stages, known as normal forms, each imposing certain rules on the database structure.",
+        "First normal form (1NF) ensures each column contains only atomic values.",
+        "Second normal form (2NF) ensures all non-key attributes are fully dependent on the primary key.",
+        "Third normal form (3NF) removes transitive dependencies.",
+        "Normalization helps maintain data integrity and reduces the risk of data anomalies."
+      ]
+    },
+    {
+      "Input": "In software engineering, version control is a system that helps developers manage changes to source code over time. It allows multiple developers to collaborate on the same project without interfering with each other's work. Version control systems (VCS) store different versions of files and track changes, allowing developers to revert to previous versions, compare changes, and resolve conflicts. The most popular version control system is Git, which is used in many collaborative software development projects. Git allows developers to work on branches, which are isolated environments for testing and development. Once changes are complete, they can be merged back into the main branch. Git repositories are often hosted on platforms such as GitHub or GitLab, making it easier for teams to collaborate and manage code changes remotely.",
+      "ExpectedOutput": [
+        "Version control is a system that helps developers manage changes to source code over time.",
+        "Version control allows multiple developers to collaborate on the same project without interfering with each other’s work.",
+        "Version control systems (VCS) store different versions of files and track changes.",
+        "Git is the most popular version control system, used in many collaborative software development projects.",
+        "Git allows developers to work on branches, which are isolated environments for testing and development.",
+        "Changes can be merged back into the main branch once development is complete.",
+        "Git repositories are often hosted on platforms such as GitHub or GitLab."
+      ]
+    },
+    {
+      "Input": "Artificial Intelligence (AI) is the simulation of human intelligence processes by machines, particularly computer systems. These processes include learning (the acquisition of information and rules for using the information), reasoning (using rules to reach approximate or definite conclusions), and self-correction. Machine Learning (ML) is a subset of AI that enables computers to learn from data without being explicitly programmed. In ML, algorithms are trained using large datasets to recognize patterns and make predictions. Deep Learning (DL), a subset of ML, uses neural networks to model high-level abstractions in data, such as image or speech recognition. AI, ML, and DL are rapidly evolving fields that are transforming industries such as healthcare, finance, and transportation.",
+      "ExpectedOutput": [
+        "Artificial Intelligence (AI) is the simulation of human intelligence processes by machines.",
+        "AI processes include learning, reasoning, and self-correction.",
+        "Machine Learning (ML) is a subset of AI that enables computers to learn from data without being explicitly programmed.",
+        "In ML, algorithms are trained using large datasets to recognize patterns and make predictions.",
+        "Deep Learning (DL), a subset of ML, uses neural networks to model high-level abstractions in data.",
+        "AI, ML, and DL are transforming industries such as healthcare, finance, and transportation."
+      ]
+    }
+  ]
+  

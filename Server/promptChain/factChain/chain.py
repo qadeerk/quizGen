@@ -36,7 +36,9 @@ def quizGenerationFromQuestionAndAnswer(index,props):
     return getCleanJson(model.invoke(quiz_generation_template.format(Question=props["Question"],Answer=props["Answer"])).content)
 
 def factExtractionNode(input):
-    return json.loads(model.invoke(fact_extraction_template.format(text=input)).content)
+    result = json.loads(model.invoke(fact_extraction_template.format(text=input)).content)
+    print("fact extraction NODE: ",result)
+    return result
 
 def questionGenerationNode(factList):
     results = parallelExecution(factList, questionGenerationFromFact)
