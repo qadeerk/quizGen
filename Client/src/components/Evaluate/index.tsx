@@ -1,5 +1,5 @@
 import styles from './evaluate.module.css';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Button } from '../../../../RealtimeServer/src/components/button/Button';
 import EvaluationQuestion from './evaluationQuestion';
@@ -12,10 +12,11 @@ export default function Evaluate() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [started, setStarted] = useState(false);
-  const [questionAnswered, setQuestionAnswered] = useState(false);
+  const [questionAnswered, setQuestionAnswered] = useState<{ answered: any } | null>(null);
   const [showAnswerMessage, setShowAnswerMessage] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [showSectionStart, setShowSectionStart] = useState(true);
+  const [answers, setAnswers] = useState<{ [key: string]: any }>({});
 
   const quizzes = [
     // Sample quizzes data
@@ -28,12 +29,12 @@ export default function Evaluate() {
         {
           title: 'Section 1',
           description: 'This is a sample quiz description an what is included in the next desction 1',
-          questions: [{ "question": { "id": 0, "value": "What do work ethics encompass?" }, "options": [{ "id": 0, "value": "Technical skills and knowledge specific to a job" }, { "id": 1, "value": "Personal interests and hobbies of an employee" }, { "id": 2, "value": "Company policies and procedures for employee conduct" }, { "id": 3, "value": "Moral principles and values like reliability, honesty, fairness, and commitment." }], "answerIndex": 3 }, { "question": { "id": 1, "value": "What is a key component of a strong work ethic?" }, "options": [{ "id": 0, "value": "Procrastination" }, { "id": 1, "value": "Disorganization" }, { "id": 2, "value": "Neglect" }, { "id": 3, "value": "Accountability." }], "answerIndex": 3 }, { "question": { "id": 2, "value": "What are the key factors that promote a positive workplace environment?" }, "options": [{ "id": 0, "value": "Competition, secrecy, and favoritism" }, { "id": 1, "value": "Isolation, rigidity, and unpredictability" }, { "id": 2, "value": "Negativity, dishonesty, and ambiguity" }, { "id": 3, "value": "Honesty, transparency, and fairness." }], "answerIndex": 3 }]
+          questions: [{ "type": "radio", "question": { "id": 0, "value": "What do work ethics encompass?" }, "options": [{ "id": 0, "value": "Technical skills and knowledge specific to a job" }, { "id": 1, "value": "Personal interests and hobbies of an employee" }, { "id": 2, "value": "Company policies and procedures for employee conduct" }, { "id": 3, "value": "Moral principles and values like reliability, honesty, fairness, and commitment." }], "answerIndex": 3 }, { "question": { "id": 1, "value": "What is a key component of a strong work ethic?" }, "options": [{ "id": 0, "value": "Procrastination" }, { "id": 1, "value": "Disorganization" }, { "id": 2, "value": "Neglect" }, { "id": 3, "value": "Accountability." }], "answerIndex": 3 }, { "question": { "id": 2, "value": "What are the key factors that promote a positive workplace environment?" }, "options": [{ "id": 0, "value": "Competition, secrecy, and favoritism" }, { "id": 1, "value": "Isolation, rigidity, and unpredictability" }, { "id": 2, "value": "Negativity, dishonesty, and ambiguity" }, { "id": 3, "value": "Honesty, transparency, and fairness." }], "answerIndex": 3 }]
         },
         {
           title: 'Section 2',
           description: 'This is a sample quiz description an what is included in the next desction 2',
-          questions: [{ "question": { "id": 0, "value": "1.What do work ethics encompass?","type":"Explanation"}, "options": [{ "id": 0, "value": "Technical skills and knowledge specific to a job" }, { "id": 1, "value": "Personal interests and hobbies of an employee" }, { "id": 2, "value": "Company policies and procedures for employee conduct" }, { "id": 3, "value": "Moral principles and values like reliability, honesty, fairness, and commitment." }], "answerIndex": 3 }, { "question": { "id": 1, "value": "2.What is a key component of a strong work ethic?" }, "options": [{ "id": 0, "value": "Procrastination" }, { "id": 1, "value": "Disorganization" }, { "id": 2, "value": "Neglect" }, { "id": 3, "value": "Accountability." }], "answerIndex": 3 }, { "question": { "id": 2, "value": "3.What are the key factors that promote a positive workplace environment?" }, "options": [{ "id": 0, "value": "Competition, secrecy, and favoritism" }, { "id": 1, "value": "Isolation, rigidity, and unpredictability" }, { "id": 2, "value": "Negativity, dishonesty, and ambiguity" }, { "id": 3, "value": "Honesty, transparency, and fairness." }], "answerIndex": 3 }]
+          questions: [{ "type": "explanation", "question": { "id": 0, "value": "1.What do work ethics encompass?" }, "options": [{ "id": 0, "value": "Technical skills and knowledge specific to a job" }, { "id": 1, "value": "Personal interests and hobbies of an employee" }, { "id": 2, "value": "Company policies and procedures for employee conduct" }, { "id": 3, "value": "Moral principles and values like reliability, honesty, fairness, and commitment." }], "answerIndex": 3 }, { "question": { "id": 1, "value": "2.What is a key component of a strong work ethic?" }, "options": [{ "id": 0, "value": "Procrastination" }, { "id": 1, "value": "Disorganization" }, { "id": 2, "value": "Neglect" }, { "id": 3, "value": "Accountability." }], "answerIndex": 3 }, { "question": { "id": 2, "value": "3.What are the key factors that promote a positive workplace environment?" }, "options": [{ "id": 0, "value": "Competition, secrecy, and favoritism" }, { "id": 1, "value": "Isolation, rigidity, and unpredictability" }, { "id": 2, "value": "Negativity, dishonesty, and ambiguity" }, { "id": 3, "value": "Honesty, transparency, and fairness." }], "answerIndex": 3 }]
         }
       ]
     }
@@ -62,6 +63,10 @@ export default function Evaluate() {
     setShowSectionStart(true);
   };
 
+  const handleStartSection = () => {
+    setShowSectionStart(false);
+  };
+
   const handleNext = () => {
     if (!questionAnswered) {
       setShowAnswerMessage(false);
@@ -69,8 +74,18 @@ export default function Evaluate() {
       return;
     }
     setShowAnswerMessage(false);
+
+    // Store the answered question in the answers state
     const currentSection = quiz?.sections[currentSectionIndex];
-    if (!currentSection) return;
+    if (currentSection) { // TODO : last question answered is not stored
+      const questionKey = `${currentSectionIndex}-${currentQuestionIndex}`;
+      console.log('questionKey', questionKey);
+      setAnswers(prevAnswers => ({
+        ...prevAnswers,
+        [questionKey]: questionAnswered
+      }));
+    }
+
     if (currentQuestionIndex < currentSection.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else if (currentSectionIndex < quiz.sections.length - 1) {
@@ -80,13 +95,12 @@ export default function Evaluate() {
     } else {
       setQuizCompleted(true);
     }
-    console.log('Next question');
-    setQuestionAnswered(false);
+    setQuestionAnswered(null);
   };
 
-  const handleStartSection = () => {
-    setShowSectionStart(false);
-  };
+  useEffect(() => {
+    console.log(answers);
+  }, [answers,quizCompleted]);
 
   const renderEvaluationQuestion = useMemo(() => {
     return (
