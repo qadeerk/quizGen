@@ -1,7 +1,7 @@
 import styles from './evaluate.module.css';
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Button } from '../../../../RealtimeServer/src/components/button/Button';
+import { Button } from '../button/button';
 import EvaluationQuestion from './evaluationQuestion';
 import EvaluationPanel from './evaluationPanel';
 
@@ -145,7 +145,8 @@ export default function Evaluate() {
                 <h2>{quiz.sections[currentSectionIndex].title}</h2>
                 {renderEvaluationQuestion}
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <Button label="Next" onClick={handleNext} />
+                  {/* <Button label="Next" onClick={handleNext} /> */}
+                  <Button variant="primary" size="medium" onClick={handleNext}>Next</Button>
                   {showAnswerMessage && !questionAnswered && <p className={styles.showAnswerMessage}>Please answers the question before proceeding.</p>}
                 </div>
               </>

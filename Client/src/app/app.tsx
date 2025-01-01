@@ -1,4 +1,4 @@
-import { Quiz } from '../components/quiz/quiz'
+// import { Quiz } from '../components/quiz/quiz'
 import './app.css'
 import AppHeader from '../components/Header'
 import QuizGenerator from '../components/quizGenerator/quizGenerator'
@@ -7,12 +7,13 @@ import { BrowserRouter, Routes, Route, useSearchParams } from 'react-router-dom'
 import Home from '../components/Home';
 import Evaluate from '../components/Evaluate';
 import Report from '../components/Report';
+import EditQuiz from "../components/editQuiz/editQuiz.tsx";
 
-function EditQuiz() {
-  const [searchParams] = useSearchParams();
-  const quizId = searchParams.get('quizId');
-  return quizId ? <Quiz id={quizId} /> : <div>Invalid link</div>;
-}
+// function EditQuiz() {
+//   const [searchParams] = useSearchParams();
+//   const quizId = searchParams.get('quizId');
+//   return quizId ? <Quiz id={quizId} /> : <div>Invalid link</div>;
+// }
 
 function App() {
   // @ts-ignore

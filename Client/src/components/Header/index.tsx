@@ -21,6 +21,7 @@ export default function AppHeader() {
         navigate('/evaluation?quizId=530ba1eb-6968-4afc-b980-5da21c597c14');
     };
     const handleTestReportBtnClick = () => {
+        
         navigate('/report');
     };
 

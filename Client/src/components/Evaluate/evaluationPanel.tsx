@@ -1,5 +1,4 @@
-import React from 'react';
-import { Button } from '../../../../RealtimeServer/src/components/button/Button';
+import { Button } from '../button/button';
 import styles from './evaluate.module.css';
 
 type EvaluationPanelProps = {
@@ -24,7 +23,7 @@ export default function EvaluationPanel({
       <h1>{title}</h1>
       <p>{description}</p>
       {instructions && <p>{instructions}</p>}
-      {buttonText && buttonAction && <Button label={buttonText} onClick={buttonAction} />}
+      {buttonText && buttonAction && <Button variant="primary" size="medium" onClick={buttonAction}>{buttonText}</Button>}
     </div>
   );
 }
