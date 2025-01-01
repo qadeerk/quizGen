@@ -133,7 +133,7 @@ export default function EditQuiz() {
             <div key={q.question.id} className="radio-question">
                 <div className="question-text">
                     <EdiText type="text" value={q.question.value} onSave={(val) => handleSave(val, sectionIndex, q.question.id)} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover
-                        canEdit={canEditQuiz !== ""} />
+                        canEdit={canEditQuiz !== ""} viewProps={{ className: "radio-question-text" }} />
                 </div>
                 <div className="options-container">
                     {q.options && q.options.map((option) => {
@@ -145,7 +145,7 @@ export default function EditQuiz() {
                                     onChange={() => handleOptionChange(sectionIndex, q.question.id, option.id)}
                                 />
                                 <label className="hc-label" htmlFor={`option-${q.question.id}${option.id.toString()}${sectionIndex}${canEditQuiz}`} style={{ paddingLeft: "5px" }} >
-                                    <EdiText type="text" value={option.value} onSave={(val) => handleSave(val, sectionIndex, q.question.id, option.id)} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover />
+                                    <EdiText type="text" value={option.value} onSave={(val) => handleSave(val, sectionIndex, q.question.id, option.id)} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover viewProps={{ className: "radio-option-text" }} />
                                 </label>
                             </div>
                         );
@@ -160,7 +160,7 @@ export default function EditQuiz() {
             <div key={q.question.id} className="explanation-question">
                 <div className="question-text">
                     <EdiText type="text" value={q.question.value} onSave={(val) => handleSave(val, sectionIndex, q.question.id)} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover
-                        canEdit={canEditQuiz !== ""} />
+                        canEdit={canEditQuiz !== ""} viewProps={{ className: "explanation-question-text" }} />
                 </div>
                 <div>
                     <p>Context</p>
@@ -249,9 +249,9 @@ export default function EditQuiz() {
         instructions?: string) => {
         return (
             <div className="info-panel">
-                {title && <EdiText type="text" value={title} onSave={(val) => handleSaveFields(val, undefined, "name")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} />}
-                {description && <EdiText type="text" value={description} onSave={(val) => handleSaveFields(val, undefined, undefined, "description")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} />}
-                {instructions && <EdiText type="text" value={instructions} onSave={(val) => handleSaveFields(val, undefined, undefined, undefined, undefined, "instructions")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} />}
+                {title && <EdiText type="text" value={title} onSave={(val) => handleSaveFields(val, undefined, "name")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} viewProps={{ className: "quiz-title" }} />}
+                {description && <EdiText type="text" value={description} onSave={(val) => handleSaveFields(val, undefined, undefined, "description")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} viewProps={{ className: "quiz-description" }} />}
+                {instructions && <EdiText type="text" value={instructions} onSave={(val) => handleSaveFields(val, undefined, undefined, undefined, undefined, "instructions")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} viewProps={{ className: "quiz-instructions" }} />}
             </div>
         );
     }
@@ -259,8 +259,8 @@ export default function EditQuiz() {
     const renderSection = (section: any, sectionIndex: number) => {
         return (
             <div key={sectionIndex} className="section">
-                {section.title && <EdiText type="text" value={section.title} onSave={(val) => handleSaveFields(val, sectionIndex, undefined, undefined, "title")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} />}
-                {section.description && <EdiText type="text" value={section.description} onSave={(val) => handleSaveFields(val, sectionIndex, undefined, "description")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} />}
+                {section.title && <EdiText type="text" value={section.title} onSave={(val) => handleSaveFields(val, sectionIndex, undefined, undefined, "title")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} viewProps={{ className: "section-title-text" }} />}
+                {section.description && <EdiText type="text" value={section.description} onSave={(val) => handleSaveFields(val, sectionIndex, undefined, "description")} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover canEdit={canEditQuiz !== ""} viewProps={{ className: "section-description-text" }} />}
                 {section.questions.map((question: QuizQuestion, questionIndex: number) => {
                     if (question.type === "radio" || !question.type) {
                         return renderRadioQuestion(question, sectionIndex);

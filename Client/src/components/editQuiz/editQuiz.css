@@ -88,4 +88,37 @@ button[editext="edit-button"] {
     border-radius: 5px;
 }
 
-/* ...existing code... */
+.quiz-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.quiz-description {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.quiz-instructions {
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.radio-question-text {
+    font-weight: 600;
+}
+.radio-option-text {
+    margin-left: 5px;
+}
+.explanation-question-text {
+    font-style: italic;
+}
+.section-title-text {
+    font-size: 20px;
+    font-weight: 700;
+}
+.section-description-text {
+    font-size: 16px;
+}
+
