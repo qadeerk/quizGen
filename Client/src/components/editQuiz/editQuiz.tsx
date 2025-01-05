@@ -1,10 +1,9 @@
 import { QuizCollectionT, QuizQuestion } from "../../types/quiz"
 import { useEffect, useState } from "react"
 import EdiText from 'react-editext'
-import "./editQuiz.css";
+import "./editQuiz.scss";
 import { useSearchParams } from "react-router-dom";
 import { Button } from "../button/button";
-// const localCache: { [key: string]: QuizT[] } = {};
 
 interface IQuizProps {
     id: string
@@ -35,42 +34,39 @@ const quizzes = [
 export default function EditQuiz() {
     const [searchParams] = useSearchParams();
     const quizId = searchParams.get('quizId');
-    const quizIdParam = quizId ? quizId : NaN;
+    const quizIdParam = quizId ? quizId : "";
     const [quizCollection, setQuizCollection] = useState<Array<QuizCollectionT>>(quizzes)
     const [status, setStatus] = useState<string>("unloaded")
     const [canEditQuiz, setCanEdit] = useState<string>("");
 
-    const quiz = quizzes.find(q => q.id === quizIdParam);
-
-    if (!quizIdParam || !quiz) {
-        return (
-            <div>
-                Quiz not found
-            </div>
-        );
-    }
-
     useEffect(() => {
-        setQuizCollection([quiz])
-        setCanEdit("canEdit")
-        setStatus("loaded")
-
-        // async function requestQuiz(id: String) {
-        //     const response = await fetch(`http://localhost:8000/getQuiz?id=${id}`)
-        //     const json = await response.json()
-        //     console.log(json)
-        //     setQuizCollection(json);
-        // }
-
+        async function requestQuiz(id: String) {
+            try {
+                const response = await fetch(`http://localhost:8000/getQuiz?id=${id}`)
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const json = await response.json();
+                if (!json || !json.id) {
+                    throw new Error("Invalid quiz data");
+                }
+                setQuizCollection([json]);
+                setStatus("loaded");
+                setCanEdit("canEdit");
+            } catch (e) {
+                console.error(e);
+                setStatus("notFound");
+            }
+        }
+        requestQuiz(quizIdParam);
     }, [])
 
+    if (status === "notFound") {
+        return <div>Quiz not found</div>;
+    }
 
     const handleSave = (val: any, sectionIndex: number, questionId: number, optionId?: number, isContext?: boolean) => {
-        console.log(arguments)
         let updatedQuizCollection;
-        // if(false){
-        //     updatedQuizCollection
-        // }else{
         updatedQuizCollection = quizCollection.map((quiz) => {
             quiz.sections[sectionIndex].questions = quiz.sections[sectionIndex].questions.map((question) => {
                 if (question.question.id === questionId) {
@@ -91,7 +87,6 @@ export default function EditQuiz() {
             });
             return quiz;
         });
-        // }
         setQuizCollection(updatedQuizCollection);
     }
 
@@ -129,7 +124,7 @@ export default function EditQuiz() {
         setCanEdit(canEditQuiz === "" ? "canEdit" : "");
     };
     const renderRadioQuestion = (q: QuizQuestion, sectionIndex: number) => {
-        return (
+        return (status == "loaded" &&
             <div key={q.question.id} className="radio-question">
                 <div className="question-text">
                     <EdiText type="text" value={q.question.value} onSave={(val) => handleSave(val, sectionIndex, q.question.id)} editOnViewClick submitOnUnfocus submitOnEnter showButtonsOnHover

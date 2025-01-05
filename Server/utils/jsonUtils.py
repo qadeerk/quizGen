@@ -87,12 +87,13 @@ def merge_questions_and_answers(correct_answers, false_answers) -> json:
 def parse_json_markdown(json_string: str) -> dict:
     # Remove the triple backticks if present
     json_string = json_string.strip()
+    # json_string = re.sub(r'\\[nrt]', '', json_string)
     start_index = json_string.find("```json")
     end_index = json_string.find("```", start_index + len("```json"))
 
     if start_index != -1 and end_index != -1:
         extracted_content = json_string[start_index + len("```json"):end_index].strip()
-        
+        # extracted_content = re.sub(r'\\[nrt]', '', extracted_content)
         # Parse the JSON string into a Python dictionary
         parsed = json.loads(extracted_content)
     elif start_index != -1 and end_index == -1 and json_string.endswith("``"):
@@ -110,6 +111,9 @@ def parse_json_markdown(json_string: str) -> dict:
 
     return parsed
 
+
+markdownJson = '```json\n[\n    {\n        "category": "Tools",\n        "skills": [\n            "JIRA",\n            "Git",\n            "Gitlab",\n            "BitBucket"\n        ]\n    },\n    {\n        "category": "Frameworks",\n        "skills": [\n            "Angular",\n            "Vue",\n            "React",\n            "Material Design",\n            "Bootstrap",\n            "Foundation"\n        ]\n    },\n    {\n        "category": "Technologies",\n        "skills": [\n            "JavaScript",\n            "HTML",\n            "CSS"\n        ]\n    },\n    {\n        "category": "Interpersonal/Transferable Skills",\n        "skills": [\n            "Problem-solving",\n            "Troubleshooting",\n            "Verbal communication",\n            "Written communication",\n            "Collaboration",\n            "Teamwork"\n        ]\n    },\n    {\n        "category": "Managerial Skills",\n        "skills": [\n            "Agile development methodologies",\n            "Scrum"\n        ]\n    }\n]\n```'
+# print(parse_json_markdown(markdownJson))
 # Data from the two nodes
 correct_answers = [
     {'Question': 'What does Object-Oriented Programming (OOP) focus on in software design?', 'Answer': 'OOP focuses on organizing software design around data or objects.'},

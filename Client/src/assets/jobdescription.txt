@@ -1,56 +1,22 @@
-Job description
-A Front-End Developer is responsible for building and maintaining the user-facing components of websites and web applications. They ensure seamless user experiences through clean, efficient, and responsive code. The role requires collaboration with designers, back-end developers, and other team members to bridge the gap between design and technical implementation.
+The ideal candidate will build and maintain web applications and user interfaces using Angular, JavaScript, HTML, and CSS. Collaborate with cross-functional teams to design, develop, and test new features and functionality. Work closely with product owners and stakeholders to gather and better understand requirements and user needs. Create clean, efficient, and maintainable code using best practices and design patterns. Ensure the performance, quality, and responsiveness of applications.
 
 Responsibilities
-• Write clean, maintainable, and scalable code in HTML, CSS, and JavaScript.
-• Use design tools like Adobe Creative Suite (Photoshop, Illustrator, XD) or Figma.
-• Build and maintain responsive designs that function on all devices and browsers.
-• Work closely with UI/UX designers to implement design mockups into functional interfaces.
-• Optimize applications for performance, speed, and scalability.
-• Ensure websites and applications adhere to SEO best practices.
-• Conduct usability testing and ensure cross-browser compatibility.
-• Debug and fix code issues to maintain seamless user experiences.
-• Keep up with emerging trends in front-end development and modern web technologies.
-• Experiment with new tools, frameworks, and methodologies to improve development efficiency.
-• Document codebase clearly for future maintenance and teamwork.
-• Utilize version control systems (e.g., Git) for effective code management.
+• Troubleshoot and debug issues as they arise.
+• Stay up-to-date with emerging trends and technologies in front-end development.
+• Attend and participate in daily stand-up meetings.
+• The majority of work is conducted remotely during normal business hours. Work is conducted on-client-site occasionally, estimated to average about one day per ten days worked.
 
 Qualifications
-• Bachelor’s degree in Computer Science, Web Development, or a related field (or equivalent experience).
-• Proven experience in front-end development (portfolio or GitHub profile preferred).
-
-Skills Required
-• Proficiency in HTML5, CSS3, and JavaScript (ES6+).
-• Experience with frameworks/libraries such as React, Angular, or Vue.js.
-• Familiarity with CSS pre-processors like SASS or LESS.
-• Knowledge of version control systems like Git.
-• Strong problem-solving and analytical skills.
-• Ability to collaborate effectively with cross-functional teams.
-• Attention to detail and focus on user experience.
-• Experience in Containerization and CI/CD pipelines.
-• Experience in Agile development practices.
-
-Key Tools and Technologies
-• Frameworks/Libraries: React, Angular, Vue.js
-• Version Control: Git, GitHub, GitLab
-• Others: Figma, Adobe XD
-
-Benefits we offer:
-• Market-leading Salary
-• Medical Coverage
-• Employee Performance-based bonuses
-• Conveyance Allowance
-• Profit Sharing Plan [Tenured Employees Only]
-• Professional Development Budget
-• Friendly work environment
-• Leave Encashment
-
-Preferred Experience
-• 3+ years of front-end development experience.
-• Experience in Agile or Scrum development environments.
-
-Job Types: Full-time, Contract
-Contract length: 12 months
-
-Ability to commute/relocate:
-• Karachi: Reliably commute or planning to relocate before starting work (Required)
+• Bachelor's degree or equivalent in Computer Science
+• 4+ years' experience in frontend development
+• JavaScript and JavaScript frameworks such as Angular, Vue, or React.
+• HTML and CSS, including CSS frameworks such as Material Design, Bootstrap, or Foundation.
+• Familiarity using Scrum/Agile development methodologies
+• Experience building object oriented web applications in JavaScript, HTML, and CSS
+• Experienced in UI development, data analysis and visualization, and software design
+• Experience with Agile development and tools such as JIRA, Git, Gitlab, and BitBucket
+• Demonstrated ability to write clean, efficient, and maintainable code using best practices and design patterns.
+• Excellent problem-solving and troubleshooting skills
+• Strong verbal and written communication skills; clearly, concisely, and completely conveying information the first time.
+• Strong collaboration and teamwork skills.
+• Active Secret Security Clearance

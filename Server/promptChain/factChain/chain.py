@@ -8,8 +8,6 @@ import re
 from langgraph.graph import Graph
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
-from langchain_core.runnables import RunnableLambda
-from langchain_core.runnables import RunnableParallel
 import json
 
 from promptTemplates.FactTemplates.factExtraction import fact_extraction_template
@@ -37,7 +35,7 @@ def quizGenerationFromQuestionAndAnswer(index,props):
 
 def factExtractionNode(input):
     result = json.loads(model.invoke(fact_extraction_template.format(text=input)).content)
-    print("fact extraction NODE: ",result)
+    # print("fact extraction NODE: ",result)
     return result
 
 def questionGenerationNode(factList):
