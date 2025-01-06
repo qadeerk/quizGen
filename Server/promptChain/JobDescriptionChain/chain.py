@@ -35,7 +35,6 @@ def generateSkillSetFromJobDescriptionNode(input, writer: StreamWriter):
             writer({"event": "Generating skill set from job description"})
         skillSet = {}
         response = model.invoke(skill_Extraction_template.format(jobDescription=input))
-        # skillSet = parse_json_markdown('```json\n[\n    {\n        "category": "Tools",\n        "skills": [\n            "JIRA",\n            "Git",\n            "Gitlab",\n            "BitBucket"\n        ]\n    },\n    {\n        "category": "Frameworks",\n        "skills": [\n            "Angular",\n            "Vue",\n            "React",\n            "Material Design",\n            "Bootstrap",\n            "Foundation"\n        ]\n    },\n    {\n        "category": "Technologies",\n        "skills": [\n            "JavaScript",\n            "HTML",\n            "CSS"\n        ]\n    },\n    {\n        "category": "Interpersonal/Transferable Skills",\n        "skills": [\n            "Problem-solving",\n            "Troubleshooting",\n            "Verbal communication",\n            "Written communication",\n            "Collaboration",\n            "Teamwork"\n        ]\n    },\n    {\n        "category": "Managerial Skills",\n        "skills": [\n            "Agile development methodologies",\n            "Scrum"\n        ]\n    }\n]\n```')
         skillSet = parse_json_markdown(response.content)
     except (json.JSONDecodeError, Exception) as e:
         print(f"Error generating skill set: {e}")
@@ -45,7 +44,6 @@ def generateSkillSetFromJobDescriptionNode(input, writer: StreamWriter):
 
 def _contextGenerationFromSkillCategory(index, skillCategory):
     try:
-        # print(str(skillCategory['skills']))
         response = model4o.invoke(context_extraction_template.format(skillset=skillCategory['skills']))
         context_data = response.content
     except (json.JSONDecodeError, Exception) as e:
@@ -64,7 +62,6 @@ def generateContextFromSkillSetNode(skillList, writer: StreamWriter):
     except Exception as e:
         print(f"Error generating context from skill set: {e}")
         skillsWithContext = []
-    # print(skillsWithContext)
     return skillsWithContext
 
 def _sectionGenerationFromSkillContext(index, skillContexts):
@@ -74,8 +71,6 @@ def _sectionGenerationFromSkillContext(index, skillContexts):
         "title": str(skillContexts['category']),
         "description": "In this section the questions will be releated to: " + ", ".join(skillContexts["skills"]),
         "questions": getCleanJson(response)}
-    # print("----------------------")
-    # print(result)
     return result
 
 def generateQuizSectionFromContextNode(skillsWithContextList, writer: StreamWriter):

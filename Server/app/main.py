@@ -18,7 +18,7 @@ from promptChain.JobDescriptionChain.chain import generateQuizFromJobDescription
 from promptChain.JobDescriptionChain.chain import generateQuizFromJobDescriptionStream
 from utils.jsonUtils import getCleanJson
 from utils.jsonUtils import getCleanMarkDownTable
-from quizDb import SaveQuiz, GetQuiz
+from quizDb import SaveQuiz, GetQuiz , isQuizValid
 
 from promptTemplates.matchingTemplates.matchingOverLappingData import overlaping_data_template
 from promptTemplates.matchingTemplates.matchingOverLappingData import non_overlaping_job_description_template
@@ -177,6 +177,26 @@ async def generate_quiz_from_context(
 @app.get("/getQuiz")
 async def get_quiz(id: str):
     return GetQuiz(id)
+
+@app.post("/publishQuiz")
+async def publish_quiz(id: str = Form(...), quiz: str = Form(...)):
+    try:
+        quiz_json = json.loads(quiz)
+        
+        if not id or not quiz_json:
+            raise HTTPException(status_code=400, detail="Missing 'id' or 'quiz' in the provided form data.")
+        
+        print(f"Publishing quiz with ID: {id}")
+        print(f"Quiz: {quiz_json}")
+        
+        if isQuizValid(id):
+            SaveQuiz(id, quiz_json)
+            return JSONResponse(content="Quiz published successfully", status_code=200)
+        
+        return JSONResponse(content="Invalid Quiz ID", status_code=400)
+    
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=400, detail="Invalid JSON provided.")
 
 if __name__ == "__main__":
     import uvicorn

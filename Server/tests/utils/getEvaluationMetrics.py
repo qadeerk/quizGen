@@ -5,10 +5,6 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-
-
-
-
 # AnswerRelevancy Metrics
 
 def getAnswerRelevancyScore(input,actual_output):

@@ -8,6 +8,7 @@ import Home from '../components/Home';
 import Evaluate from '../components/Evaluate';
 import Report from '../components/Report';
 import EditQuiz from "../components/editQuiz/editQuiz.tsx";
+import Publish from "../components/Publish";
 
 // function EditQuiz() {
 //   const [searchParams] = useSearchParams();
@@ -38,6 +39,7 @@ function App() {
           } />
           <Route path="/edit" element={<EditQuiz />} />
           <Route path="/evaluation" element={<Evaluate />} />
+          <Route path="/publish" element={<Publish />} />
           <Route path="/report" element={<Report />} />
         </Routes>
       </BrowserRouter>

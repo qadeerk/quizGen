@@ -1,0 +1,79 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Page-1" id="kE_CoZR6ngLvgHtqJXZ6">
+    <mxGraphModel dx="1098" dy="988" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-9" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;" parent="1" vertex="1">
+          <mxGeometry x="40" y="120" width="440" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-1" value="Input" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="150" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-2" value="Prompt" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="220" y="150" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-3" value="Output" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="380" y="150" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-4" value="LLM" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="180" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-5" value="Input" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="230" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-6" value="Chain" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="220" y="230" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-7" value="Output" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="380" y="230" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-8" value="LLM" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="260" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-10" value="Pre-Production" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-11" value="Decting issues on sample dataset&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="80" width="290" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-12" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;" parent="1" vertex="1">
+          <mxGeometry x="520" y="120" width="440" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-13" value="Input" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="540" y="150" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-14" value="Prompt" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="700" y="150" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-15" value="Output" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="860" y="150" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-16" value="LLM" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="740" y="180" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-17" value="Input" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="540" y="230" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-18" value="Chain" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="700" y="230" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-19" value="Output" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="860" y="230" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-20" value="LLM" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="730" y="260" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-21" value="Production" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="520" y="40" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="v2Y0TYF6yO7MKOETMVTC-22" value="Run test on traces to dected issues which can be use for later prompt/chain itrations" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="520" y="80" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hofXO7Nv6b9BtNTKFnfF-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

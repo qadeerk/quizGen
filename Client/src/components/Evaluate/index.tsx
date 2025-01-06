@@ -1,4 +1,4 @@
-import styles from './evaluate.module.css';
+import styles from './evaluate.module.scss';
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Button } from '../button/button';

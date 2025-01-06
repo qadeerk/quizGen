@@ -11,6 +11,7 @@ from langchain_openai import ChatOpenAI
 from promptTemplates.FactTemplates.factExtraction import fact_extraction_template
 from dotenv import load_dotenv
 from langfuse.callback import CallbackHandler
+from utils.getLangfuseConfig import langfuse_handler
 
 # Load the .env file
 load_dotenv()
@@ -29,7 +30,6 @@ more comprehensive and faithful summary, signifying that the summary effectively
 encapsulates the crucial points and details from the original content.
 """
 
-# This is the summary, replace this with the actual output from your LLM application
 actual_output= llm.invoke(fact_extraction_template.format(text=input),config={"callbacks": [langfuse_handler]}).content
 
 print(actual_output)

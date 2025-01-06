@@ -38,6 +38,22 @@ def GetQuiz(quiz_uuid:str):
     except Exception as e:
         print(f"Error reading quiz file: {e}")
         return ""
+    
+def isQuizValid(quiz_uuid:str):  
+    try:
+        print(f"Getting quiz with UUID: {quiz_uuid}")
+        # Construct the file path
+        quizes_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Quizes")
+        file_path = os.path.join(quizes_folder, f"{quiz_uuid}.json")
+        
+        # Check if the file exists
+        if not os.path.exists(file_path):
+            return False
+        
+        return True
+    except Exception as e:
+        print(f"Error reading quiz file: {e}")
+        return False
 
 def SubmitQuiz(quiz_uuid, data):
     return True

@@ -2,7 +2,7 @@ import { QuizCollectionT, QuizQuestion } from "../../types/quiz"
 import { useEffect, useState } from "react"
 import EdiText from 'react-editext'
 import "./editQuiz.scss";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "../button/button";
 
 interface IQuizProps {
@@ -32,6 +32,7 @@ const quizzes = [
 ];
 
 export default function EditQuiz() {
+    const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const quizId = searchParams.get('quizId');
     const quizIdParam = quizId ? quizId : "";
@@ -119,10 +120,6 @@ export default function EditQuiz() {
         setQuizCollection(updatedQuizCollection);
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const toggleEdit = () => {
-        setCanEdit(canEditQuiz === "" ? "canEdit" : "");
-    };
     const renderRadioQuestion = (q: QuizQuestion, sectionIndex: number) => {
         return (status == "loaded" &&
             <div key={q.question.id} className="radio-question">
@@ -269,11 +266,34 @@ export default function EditQuiz() {
         );
     }
 
+    const publishQuiz = async () => {
+        try {
+
+            const formData = new FormData();
+            formData.append("id",quizIdParam);
+            formData.append("quiz",JSON.stringify(quizCollection[0]));
+
+            const response = await fetch("http://localhost:8000/publishQuiz", {
+                method: "POST",
+                body: formData,
+                redirect: "follow"
+              });
+
+            if (!response.ok) {
+                throw new Error("Failed to publish quiz");
+            }
+
+            navigate('/publish?quizId=' + quizIdParam);
+        } catch (error) {
+            console.error("Error publishing quiz:", error);
+        }
+    };
+
     return (
         (status == "loaded" &&
             <div className="quiz-page-container">
                 <div className="publish-container">
-                    <Button id="edit-quiz-btn" className="hc-generate-btn" onClick={() => console.log("quizCollection", quizCollection)}>
+                    <Button id="edit-quiz-btn" className="hc-generate-btn" onClick={publishQuiz}>
                         publish
                     </Button>
                 </div>

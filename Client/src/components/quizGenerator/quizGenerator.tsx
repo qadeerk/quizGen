@@ -6,7 +6,7 @@ import styles from "./quizGenerator.module.scss";
 
 export default function QuizGenerator(props: any) {
     const navigate = useNavigate();
-    const [ActiveTab, setActiveTab] = useState('data');
+    const [ActiveTab, setActiveTab] = useState('job');
     const [jobDescription, setJobDescription] = useState("test");
     const [currentPhase, setCurrentPhase] = useState("Initilized");
 
@@ -15,7 +15,6 @@ export default function QuizGenerator(props: any) {
     const cvTabActive = clsx(ActiveTab === "cv" ? 'hc-active' : "")
 
     useEffect(() => {
-        console.log("Fetching job description");
         fetch("http://localhost:5173/public/jobdescription.txt")
             .then((response) => {
                 if (!response.ok) {
@@ -24,7 +23,6 @@ export default function QuizGenerator(props: any) {
                 return response.text();
             })
             .then((data) => {
-                console.log(data);
                 setJobDescription(data)
             })
     }
@@ -36,24 +34,22 @@ export default function QuizGenerator(props: any) {
         const fileInput = document.querySelector("#pdf_doc") as HTMLInputElement;
         let file = (fileInput && fileInput.files && fileInput.files[0]) ? fileInput.files[0] : null;
 
-
+        
         const formData = new FormData();
-        // formData.append("context", context);
-        formData.append("jobDescription",jobDescription);
-        // if(file)formData.append("file", file);
+        if(context)formData.append("context", context);
+        if(jobDescription)formData.append("jobDescription",jobDescription);
+        if(file)formData.append("file", file);
         
 
-        // const response = await generateQuizRequestAll(formData);
-        // const response = await generateQuizRequestFromJobDescription(formData);
-        const response = await streamGenerateQuizRequestFromJobDescription(formData,setCurrentPhase);
 
-        console.log(response);
-        // debugger;
+        const response = await streamGenerateQuizRequestFromJobDescription(formData,setCurrentPhase);
         if(response?.quizId){
             navigate(`/edit?quizId=${response.quizId}`);
         }
         
         
+        // const response = await generateQuizRequestAll(formData);
+        // const response = await generateQuizRequestFromJobDescription(formData);
         // props.setQuizId(response.quizId);
         // props.setMatchingAttributes(response.matchingAtrubuted.replace(/\n/g, ''));
         // props.setuniqueAttributes(response.nonMatchingAtrubuted.replace(/\n/g, ''));
@@ -68,19 +64,19 @@ export default function QuizGenerator(props: any) {
             {currentPhase === "Initilized" ? (
                 <div id="tabs" className="hc-tabs">
                     <div className="hc-tabs-header">
-                        <button className={"hc-tab " + dataTabActive} data-tab="data" onClick={() => setActiveTab("data")}>Data</button>
                         <button className={"hc-tab " + jobDescriptionTabActive} data-tab="job" onClick={() => setActiveTab("job")}>Job Description</button>
+                        <button className={"hc-tab " + dataTabActive} data-tab="data" onClick={() => setActiveTab("data")}>Data</button>
                         <button className={"hc-tab " + cvTabActive} data-tab="cv" onClick={() => setActiveTab("cv")}>CV</button>
-                    </div>
-
-                    <div id="tab-data" className={"hc-tab-content " + dataTabActive}>
-                        <div className="hc-section-title">Create Your Data Quiz</div>
-                        <textarea className="hc-textarea" placeholder="Enter your text here..."></textarea>
                     </div>
 
                     <div id="tab-job" className={"hc-tab-content " + jobDescriptionTabActive}>
                         <div className="hc-section-title">Create Your Job Quiz</div>
                         <textarea className="hc-textarea" placeholder="Enter your text here..." value={jobDescription} onChange={(t) => setJobDescription(t.target.value)}></textarea>
+                    </div>
+
+                    <div id="tab-data" className={"hc-tab-content " + dataTabActive}>
+                        <div className="hc-section-title">Create Your Data Quiz</div>
+                        <textarea className="hc-textarea" placeholder="Enter your text here..."></textarea>
                     </div>
 
                     <div id="tab-cv" className={"hc-tab-content " + cvTabActive}>

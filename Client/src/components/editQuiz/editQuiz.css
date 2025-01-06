@@ -1,0 +1,135 @@
+/* ...existing code... */
+
+.hc-input-label-container {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.hc-input-label-container input {
+    order: 1;
+}
+
+.hc-input-label-container label {
+    order: 2;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.hc-input-label-container div[editext='edit-container'] {
+    flex-direction: row-reverse;
+}
+
+div[editext='edit-container'] {
+    flex-direction: row;
+}
+
+button[editext="edit-button"] {
+    opacity: 0;
+}
+
+.quiz-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: url("./main-bg.webp");
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+}
+.quiz-page-container:after {
+    content:"";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.65);
+    left: 0;
+    top: 0;
+}
+
+.publish-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.hc-generate-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hc-generate-btn:hover {
+    background-color: #0056b3;
+}
+
+.quiz-container {
+    width: 800px;
+    max-width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff8f;
+    border-radius: 5px;
+}
+
+.info-panel-container {
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.section-container {
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.quiz-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.quiz-description {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.quiz-instructions {
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.radio-question-text {
+    font-weight: 600;
+}
+.radio-option-text {
+    margin-left: 5px;
+}
+.explanation-question-text {
+    font-style: italic;
+}
+.section-title-text {
+    font-size: 20px;
+    font-weight: 700;
+}
+.section-description-text {
+    font-size: 16px;
+}

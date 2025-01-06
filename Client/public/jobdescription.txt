@@ -1,22 +1,22 @@
-The ideal candidate will build and maintain web applications and user interfaces using Angular, JavaScript, HTML, and CSS. Collaborate with cross-functional teams to design, develop, and test new features and functionality. Work closely with product owners and stakeholders to gather and better understand requirements and user needs. Create clean, efficient, and maintainable code using best practices and design patterns. Ensure the performance, quality, and responsiveness of applications.
+Job Responsibilities:
+• Responsible for designing, developing, and managing the ETL Data integration process
+• Manage additional resources as required to support the ETL process
+• Works with diverse data sources and analyzes large amounts of data collected from those sources
+• Able to provide an in-depth analysis on trends as it relates to the organization while formatting the material for user
+• Write and pull data queries and review output files for accuracy and reliability
+• Lead and manage the data consolidation, quality control, and importing tasks with new company onboarding transitions into the ERP/ITSM environment.
+• Assist in creation of key performance indicators as assigned by manager
+• Directly engaging with stakeholders around the organization, discussion forums, conference calls, and participating in analysis and process projects as assigned by manager.
+• Proactively engage in continuous improvement efforts for all reports and their operation.
 
-Responsibilities
-• Troubleshoot and debug issues as they arise.
-• Stay up-to-date with emerging trends and technologies in front-end development.
-• Attend and participate in daily stand-up meetings.
-• The majority of work is conducted remotely during normal business hours. Work is conducted on-client-site occasionally, estimated to average about one day per ten days worked.
-
-Qualifications
-• Bachelor's degree or equivalent in Computer Science
-• 4+ years' experience in frontend development
-• JavaScript and JavaScript frameworks such as Angular, Vue, or React.
-• HTML and CSS, including CSS frameworks such as Material Design, Bootstrap, or Foundation.
-• Familiarity using Scrum/Agile development methodologies
-• Experience building object oriented web applications in JavaScript, HTML, and CSS
-• Experienced in UI development, data analysis and visualization, and software design
-• Experience with Agile development and tools such as JIRA, Git, Gitlab, and BitBucket
-• Demonstrated ability to write clean, efficient, and maintainable code using best practices and design patterns.
-• Excellent problem-solving and troubleshooting skills
-• Strong verbal and written communication skills; clearly, concisely, and completely conveying information the first time.
-• Strong collaboration and teamwork skills.
-• Active Secret Security Clearance
+Requirements:
+• Bachelors degree in relevant field
+• 3-5 years of experience with the ETL processes and Data Quality assurance experience
+• 3-5 years of experience in IT and Business Intelligence creating advanced reports using tools such as Tableau (or other BI tools like Power BI, Qlik, or Tibco), SSRS, SSIS, T-SQL, MS SQL Server preferred.
+• Prior experience in Business Intelligence development, planning, design, configuration, coding, and troubleshooting of BI tools preferred.
+• AI Experience with data mining and predictive analytics.
+• Strong understanding of database systems and data warehouse architecture preferred.
+• MS Office Excel expert in (Macros and VBA, VLOOKUP, XLOOKUP, INDEX MATCH, Data Validation, Formulas, Logical Functions, IF Statements, Nested IF, SUMPRODUCT, OR and AND, HLOOKUP, CONCATENATE, TRIM, EXACT, TEXT Function, FIND/REPLACE, LEFT, RIGHT, UPPER)
+• Experience with NetSuite, NextService (FSM), ServiceTrade, QuickBooks, SAGE, Foundation is a plus
+• Knowledgeable in Data Security is a plus Core Competencies
+• Comfortable in EST time zone (Evening/Night)

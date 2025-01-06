@@ -1,0 +1,125 @@
+.contentWrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:url("./main-bg.webp");
+}
+
+.evaluateContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 65px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quizContent, .quizStart , .sectionStart, .thankYouScreen{
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0px 0px 40px 0px;
+  max-width: 600px;
+  width: 100%;
+  min-height: 60vh;
+  position: relative;
+  
+  h1, h2{
+    background-color: #005a9e;
+    color: #fff !important;
+    text-align: center;
+    text-transform: uppercase !important;
+    font-size: 16px;
+    padding: 20px 0;
+    border-radius: 8px 8px 0px 0px;
+  }
+}
+
+.quizStart h1, .quizContent h2, .sectionStart h2, .evaluateContainer h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.quizStart p, .quizContent p, .sectionStart p, .evaluateContainer p {
+  margin-top: 14px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #666666;
+  padding: 0px 16px;
+}
+
+.quizStart button, .quizContent button, .sectionStart button, .evaluateContainer button {
+  margin: 48px 20px 16px;
+  position: absolute;
+  bottom: 5px;
+  right: 0px;
+}
+
+.quizStart div, .quizContent div, .sectionStart div {
+  margin-top: 14px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #666666;
+  padding: 0px 16px;
+
+  label{
+    padding-left: 10px;
+  }
+}
+
+.sectionDivider {
+  margin: 20px 0;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #0078d4;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005a9e;
+}
+
+.showAnswerMessage {
+  color: red !important;
+  animation: pulse 1s;
+  margin-left: 10px;
+  padding-top: 8px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.btnCss{
+  background-color: #0078d4;
+  padding: 8px 24px;
+  color: #fff;
+  margin-top: 30px;
+
+  &:hover{
+    background-color: #005a9e;
+  }
+}

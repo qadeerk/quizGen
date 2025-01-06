@@ -1,5 +1,5 @@
 import { Button } from '../button/button';
-import styles from './evaluate.module.css';
+import styles from './evaluate.module.scss';
 
 type EvaluationPanelProps = {
   type: 'main' | 'secondary' | 'tertiary';

@@ -13,20 +13,23 @@ export default function EvaluateExplanationQuestionComponent({ quiz, onQuestionA
     }
     
     return (
-        <div style={{ textAlign: 'center' }}>
-            <p>{quiz.question.value}</p>
-            <button
-                style={{
-                    backgroundColor: 'red',
-                    borderRadius: '50%',
-                    width: '50px',
-                    height: '50px',
-                    color: 'white',
-                    border: 'none',
-                    cursor: 'pointer'
-                }}
-                onClick={() => handleExplanationSubmit()}
-            >
+        <div style={{ paddingLeft: '0px'}}>
+            			<p style={{ paddingLeft: '0px'}}>{quiz.question.value}</p>
+            			<button
+                			style={{
+                   			 	backgroundColor: '#005a9e',
+                    				padding: '5px',
+                   				 borderRadius: '50%',
+                   				 width: '75px',
+                    				height: '75px',
+                   				 color: 'white',
+                   				 border: '1px solid #002B5B',
+                   				 cursor: 'pointer',
+                   				 left: '50%',
+                    				transform: 'translateX(-50%)'
+               				 }}
+               				 onClick={() => handleExplanationSubmit()}
+            			>
                 Submit
             </button>
         </div>
