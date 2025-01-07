@@ -1,22 +1,20 @@
-Job Responsibilities:
-• Responsible for designing, developing, and managing the ETL Data integration process
-• Manage additional resources as required to support the ETL process
-• Works with diverse data sources and analyzes large amounts of data collected from those sources
-• Able to provide an in-depth analysis on trends as it relates to the organization while formatting the material for user
-• Write and pull data queries and review output files for accuracy and reliability
-• Lead and manage the data consolidation, quality control, and importing tasks with new company onboarding transitions into the ERP/ITSM environment.
-• Assist in creation of key performance indicators as assigned by manager
-• Directly engaging with stakeholders around the organization, discussion forums, conference calls, and participating in analysis and process projects as assigned by manager.
-• Proactively engage in continuous improvement efforts for all reports and their operation.
+Technical Project Coordinator
 
 Requirements:
-• Bachelors degree in relevant field
-• 3-5 years of experience with the ETL processes and Data Quality assurance experience
-• 3-5 years of experience in IT and Business Intelligence creating advanced reports using tools such as Tableau (or other BI tools like Power BI, Qlik, or Tibco), SSRS, SSIS, T-SQL, MS SQL Server preferred.
-• Prior experience in Business Intelligence development, planning, design, configuration, coding, and troubleshooting of BI tools preferred.
-• AI Experience with data mining and predictive analytics.
-• Strong understanding of database systems and data warehouse architecture preferred.
-• MS Office Excel expert in (Macros and VBA, VLOOKUP, XLOOKUP, INDEX MATCH, Data Validation, Formulas, Logical Functions, IF Statements, Nested IF, SUMPRODUCT, OR and AND, HLOOKUP, CONCATENATE, TRIM, EXACT, TEXT Function, FIND/REPLACE, LEFT, RIGHT, UPPER)
-• Experience with NetSuite, NextService (FSM), ServiceTrade, QuickBooks, SAGE, Foundation is a plus
-• Knowledgeable in Data Security is a plus Core Competencies
-• Comfortable in EST time zone (Evening/Night)
+• Bachelor's degree in Project Management or related technical field required
+• Demonstrated understanding of Agile Project Management processes, strategies and methods
+• Excellent time management and organizational skills and experience establishing guidelines in these areas for others
+• Analytical thinking and problem-solving skills
+• Ability to predict challenges and seek to proactively head off obstacles
+
+Responsibilities:
+• Maintain and monitor project plans, schedules, and work hours.
+• To help ensure that the software development process works as it is intended.
+• Organize team meetings, and document and follow up on key actions and decisions from meetings.
+• Ensure that project deadlines are met and manage any required changes.
+• Provide administrative support and undertake project tasks when necessary.
+• Develop and implement project strategies, ensuring adherence to frameworks.
+• Assess project risks and issues, providing solutions where applicable.
+• Manage feedback/reviews from clients towards achieving the best solutions.
+• Create and maintain a project management calendar to fulfill project goals and objectives.
+• Please let me know if any further details or support are needed to proceed with this recruitment.

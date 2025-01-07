@@ -28,6 +28,7 @@ load_dotenv()
 
 model = ChatOpenAI(model_name="gpt-4o-mini",temperature=0.0)
 model4o = ChatOpenAI(model_name="gpt-4o",temperature=0.0)
+gpt_o1_mini = ChatOpenAI(model_name="o1-mini")
 
 def generateSkillSetFromJobDescriptionNode(input, writer: StreamWriter):
     try:

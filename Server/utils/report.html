@@ -11,8 +11,6 @@
         href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/jsondiffpatch/dist/jsondiffpatch.umd.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsondiffpatch/dist/formatters-styles/html.css" />
 
     <style>
         /* Global styles */
@@ -85,7 +83,7 @@
         /* Scrollable table body with fixed row height */
         tbody {
             display: block;
-            max-height: 4000px; /* Adjust as needed for your layout */
+            max-height: 250px; /* Adjust as needed for your layout */
             overflow-y: auto; /* Make the table body scrollable */
         }
 
@@ -104,49 +102,6 @@
             padding: 12px 15px;
             border-bottom: 1px solid #e5e7eb;
             vertical-align: middle;
-            white-space: nowrap; /* Prevent text from wrapping */
-            overflow: hidden; /* Hide overflow */
-            text-overflow: ellipsis; /* Add ellipsis for overflow text */
-            max-width: 0; /* Ensure ellipsis works */
-        }
-
-        td pre {
-            white-space: pre-wrap; /* Allow preformatted text to wrap */
-            word-wrap: break-word; /* Break long words */
-            max-height: 300px; /* Limit height */
-            overflow: auto; /* Add scroll for overflow */
-        }
-
-        td pre{
-            white-space: pre-wrap; /* Allow preformatted text to wrap */
-            word-wrap: break-word; /* Break long words */
-            max-height: 300px; /* Limit height */
-            overflow: auto; /* Add scroll for overflow */
-        }
-
-        td.diff {
-            white-space: pre-wrap; /* Allow preformatted text to wrap */
-            word-wrap: break-word; /* Break long words */
-            max-height: 300px; /* Limit height */
-        }
-
-
-        /* Custom scrollbar styles */
-        td pre::-webkit-scrollbar {
-            width: 8px; /* Width of the scrollbar */
-        }
-
-        td pre::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Background of the scrollbar track */
-        }
-
-        td pre::-webkit-scrollbar-thumb {
-            background: #888; /* Color of the scrollbar thumb */
-            border-radius: 4px; /* Rounded corners for the scrollbar thumb */
-        }
-
-        td pre::-webkit-scrollbar-thumb:hover {
-            background: #555; /* Color of the scrollbar thumb on hover */
         }
 
         /* Fix column widths if desired (optional) */
@@ -165,9 +120,6 @@
         th:nth-child(5), td:nth-child(5) {
             width: 30%;
         }
-        th:nth-child(6), td:nth-child(6) {
-            width: 30%;
-        }
         /* Modify or add more columns as needed */
 
         /* Hover effect on table rows (optional) */
@@ -181,36 +133,28 @@
             font-size: 0.8em;
             opacity: 0.6;
         }
-
-        .jsondiffpatch-delta {
-            font-family: 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Courier, monospace;
-            font-size: 12px;
-            margin: 0;
-            padding: 0 0 0 12px;
-            display: inline-block;
-            max-height: 300px;
-            overflow: auto;
-        }
-        .jsondiffpatch-delta::-webkit-scrollbar {
-            width: 8px; /* Width of the scrollbar */
-        }
-        .jsondiffpatch-delta::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Background of the scrollbar track */
-        }
-        .jsondiffpatch-delta::-webkit-scrollbar-thumb {
-            background: #888; /* Color of the scrollbar thumb */
-            border-radius: 4px; /* Rounded corners for the scrollbar thumb */
-        }
-        .jsondiffpatch-delta::-webkit-scrollbar-thumb:hover {
-            background: #555; /* Color of the scrollbar thumb on hover */
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Test Case Name and Prompt -->
-        <h1>Test Case: {{ test_name }}</h1>
-        <h3>Prompt: {{ prompt }}</h3>
+        <h1>Test Case: Job Description Skill Extraction Test</h1>
+        <h3>Prompt: 
+    Extract a list of skill set based on the below description 
+    skills should include tools, frameworks , technologies , interpersonal/transferable, managerial 
+    -----
+    job Description: 
+    {jobDescription}
+    -----
+    These skill should not include work type, certifications and background checks 
+    Format output in json 
+    [
+        {{
+            "category": name,
+            "skills": []
+        }}
+    ]
+</h3>
 
         <!-- Report Table -->
         <table id="comparisonTable">
@@ -225,22 +169,29 @@
                     <th class="sortable" data-type="numeric">Cost</th>
                     <th class="sortable" data-type="string">Actual Output</th>
                     <th class="sortable" data-type="string">Expected Output</th>
-                    <th class="sortable" data-type="string">Differences</th>
                     <!-- Add more headers here if needed, with class="sortable" and data-type -->
                 </tr>
             </thead>
             <tbody>
-                {% for result in results %}
+                
                 <tr>
-                    <td>{{ result.model_name }}</td>
-                    <td>{{ result.score }}</td>
-                    <td>{{ result.cost }}</td>
-                    <td>{{ result.actual_output }}</td>
-                    <td>{{ result.expected_output }}</td>
-                    <td id="diff-{{ loop.index }}" class="diff"></td>
+                    <td>gpt-3.5-turbo</td>
+                    <td>0.984514594078064</td>
+                    <td>$0.000482</td>
+                    <td>[{"category": "Tools", "skills": ["Angular", "JavaScript", "HTML", "CSS", "Material Design", "Bootstrap", "Foundation", "JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Verbal and written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": ["Scrum/Agile development methodologies"]}]</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Troubleshooting", "Strong verbal communication", "Strong written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": ["Scrum", "Agile development"]}]</td>
                     <!-- Add more columns here if needed -->
                 </tr>
-                {% endfor %}
+                
+                <tr>
+                    <td>gpt-4o-mini</td>
+                    <td>0.9938533902168274</td>
+                    <td>$0.00019065</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "GitLab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable Skills", "skills": ["Problem-solving", "Troubleshooting", "Verbal communication", "Written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial Skills", "skills": ["Agile development methodologies", "Scrum"]}]</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Troubleshooting", "Strong verbal communication", "Strong written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": ["Scrum", "Agile development"]}]</td>
+                    <!-- Add more columns here if needed -->
+                </tr>
+                
             </tbody>
         </table>
     </div>
@@ -312,74 +263,6 @@
                 const baseText = header.innerText.replace(/[▲▼]/g, '').trim();
                 header.innerHTML = baseText + `<span class="sort-indicator">${arrow}</span>`;
             }
-
-            /**
-             * Renders JSON data in a table cell.
-             * @param {HTMLElement} cell - The table cell to render JSON in
-             * @param {string} jsonData - The JSON data as a string
-             */
-            function renderJson(cell, jsonData) {
-                try {
-                    const json = JSON.parse(jsonData);
-                    const formattedJson = JSON.stringify(json, null, 2);
-                    cell.innerHTML = `<pre>${formattedJson}</pre>`;
-                } catch (e) {
-                    cell.innerHTML = jsonData; // Fallback to raw data if parsing fails
-                }
-            }
-
-            /**
-             * Syncs the scroll of two elements.
-             * @param {HTMLElement} element1 - The first element
-             * @param {HTMLElement} element2 - The second element
-             */
-            function syncScroll(element1, element2) {
-                element1.addEventListener('scroll', () => {
-                    element2.scrollTop = element1.scrollTop;
-                });
-                element2.addEventListener('scroll', () => {
-                    element1.scrollTop = element2.scrollTop;
-                });
-            }
-
-            /**
-             * Renders the differences between two JSON objects in a table cell.
-             * @param {HTMLElement} cell - The table cell to render differences in
-             * @param {string} json1 - The first JSON data as a string
-             * @param {string} json2 - The second JSON data as a string
-             */
-            function renderDiff(cell, json1, json2) {
-                try {
-                    const obj1 = JSON.parse(json1);
-                    const obj2 = JSON.parse(json2);
-                    const delta = jsondiffpatch.diff(obj1, obj2);
-                    const diffHtml = jsondiffpatch.formatters.html.format(delta);
-                    cell.innerHTML = diffHtml;
-                } catch (e) {
-                    cell.innerHTML = 'Error computing differences';
-                }
-            }
-
-            // Render JSON in the actual_output and expected_output columns
-            document.querySelectorAll('td:nth-child(4)').forEach(cell => {
-                renderJson(cell, cell.innerText);
-            });
-            document.querySelectorAll('td:nth-child(5)').forEach(cell => {
-                renderJson(cell, cell.innerText);
-            });
-
-            // Render differences in the new differences column
-            const rows = document.querySelectorAll('tbody tr');
-            rows.forEach((row, index) => {
-                const actualCell = row.querySelector('td:nth-child(4) pre');
-                const expectedCell = row.querySelector('td:nth-child(5) pre');
-                const diffCell = row.querySelector(`#diff-${index + 1}`);
-                renderDiff(diffCell, actualCell.innerText, expectedCell.innerText);
-                syncScroll(actualCell, expectedCell);
-                syncScroll(diffCell, actualCell);
-                syncScroll(diffCell, expectedCell);
-            });
-
         })();
     </script>
 </body>

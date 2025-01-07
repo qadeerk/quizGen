@@ -9,11 +9,13 @@ load_dotenv()
 gpt4 = ChatOpenAI(model_name="gpt-4", temperature=0)
 gpt4_mini = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
 gpt3_turbo = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+gpt_o1_mini = ChatOpenAI(model_name="o1-mini")
 ChatAnthropicllm = ChatAnthropic(model_name="gpt-4", temperature=0)
 
 def getOpenAIModelList():
     # return [gpt4_mini]
-    return [gpt3_turbo, gpt4_mini, gpt4]
+    # return [gpt_o1_mini, gpt4_mini]
+    return [gpt3_turbo, gpt4_mini, gpt4, gpt_o1_mini]
 
 def getModelList():
     return [gpt3_turbo, gpt4_mini, gpt4, ChatAnthropicllm]

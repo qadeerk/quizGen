@@ -191,26 +191,28 @@
             max-height: 300px;
             overflow: auto;
         }
-        .jsondiffpatch-delta::-webkit-scrollbar {
-            width: 8px; /* Width of the scrollbar */
-        }
-        .jsondiffpatch-delta::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Background of the scrollbar track */
-        }
-        .jsondiffpatch-delta::-webkit-scrollbar-thumb {
-            background: #888; /* Color of the scrollbar thumb */
-            border-radius: 4px; /* Rounded corners for the scrollbar thumb */
-        }
-        .jsondiffpatch-delta::-webkit-scrollbar-thumb:hover {
-            background: #555; /* Color of the scrollbar thumb on hover */
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Test Case Name and Prompt -->
-        <h1>Test Case: {{ test_name }}</h1>
-        <h3>Prompt: {{ prompt }}</h3>
+        <h1>Test Case: Job Description Skill Extraction Test</h1>
+        <h3>Prompt: 
+    Extract a list of skill set based on the below description 
+    skills should include tools, frameworks , technologies , interpersonal/transferable, managerial 
+    -----
+    job Description: 
+    {jobDescription}
+    -----
+    These skill should not include work type, certifications and background checks 
+    Format output in json 
+    [
+        {{
+            "category": name,
+            "skills": []
+        }}
+    ]
+</h3>
 
         <!-- Report Table -->
         <table id="comparisonTable">
@@ -230,17 +232,47 @@
                 </tr>
             </thead>
             <tbody>
-                {% for result in results %}
+                
                 <tr>
-                    <td>{{ result.model_name }}</td>
-                    <td>{{ result.score }}</td>
-                    <td>{{ result.cost }}</td>
-                    <td>{{ result.actual_output }}</td>
-                    <td>{{ result.expected_output }}</td>
-                    <td id="diff-{{ loop.index }}" class="diff"></td>
+                    <td>gpt-3.5-turbo</td>
+                    <td>0.982151985168457</td>
+                    <td>$0.000473</td>
+                    <td>[{"category": "tools", "skills": ["Angular", "JavaScript", "HTML", "CSS", "Material Design", "Bootstrap", "Foundation", "JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "frameworks", "skills": ["Angular", "Vue", "React"]}, {"category": "technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "interpersonal/transferable", "skills": ["Strong verbal and written communication skills", "Strong collaboration and teamwork skills"]}, {"category": "managerial", "skills": ["Experience with Agile development methodologies"]}]</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Troubleshooting", "Strong verbal communication", "Strong written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": ["Scrum", "Agile development"]}]</td>
+                    <td id="diff-1" class="diff"></td>
                     <!-- Add more columns here if needed -->
                 </tr>
-                {% endfor %}
+                
+                <tr>
+                    <td>gpt-4o-mini</td>
+                    <td>0.9938533902168274</td>
+                    <td>$0.00019065</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "GitLab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable Skills", "skills": ["Problem-solving", "Troubleshooting", "Verbal communication", "Written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial Skills", "skills": ["Agile development methodologies", "Scrum"]}]</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Troubleshooting", "Strong verbal communication", "Strong written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": ["Scrum", "Agile development"]}]</td>
+                    <td id="diff-2" class="diff"></td>
+                    <!-- Add more columns here if needed -->
+                </tr>
+                
+                <tr>
+                    <td>gpt-4</td>
+                    <td>0.9917208552360535</td>
+                    <td>$0.02346</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Troubleshooting", "Verbal and written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": ["Scrum/Agile development methodologies"]}]</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Troubleshooting", "Strong verbal communication", "Strong written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": ["Scrum", "Agile development"]}]</td>
+                    <td id="diff-3" class="diff"></td>
+                    <!-- Add more columns here if needed -->
+                </tr>
+                
+                <tr>
+                    <td>o1-mini</td>
+                    <td>0.9918784499168396</td>
+                    <td>$0.011133</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Troubleshooting", "Verbal Communication", "Written Communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": []}]</td>
+                    <td>[{"category": "Tools", "skills": ["JIRA", "Git", "Gitlab", "BitBucket"]}, {"category": "Frameworks", "skills": ["Angular", "Vue", "React", "Material Design", "Bootstrap", "Foundation"]}, {"category": "Technologies", "skills": ["JavaScript", "HTML", "CSS"]}, {"category": "Interpersonal/Transferable", "skills": ["Problem-solving", "Troubleshooting", "Strong verbal communication", "Strong written communication", "Collaboration", "Teamwork"]}, {"category": "Managerial", "skills": ["Scrum", "Agile development"]}]</td>
+                    <td id="diff-4" class="diff"></td>
+                    <!-- Add more columns here if needed -->
+                </tr>
+                
             </tbody>
         </table>
     </div>
