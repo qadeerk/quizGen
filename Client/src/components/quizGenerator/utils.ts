@@ -62,6 +62,8 @@ const streamGenerateQuizRequestFromJobDescription = async (formData: any, setCur
     const reader = response.body.getReader();
     const decoder = new TextDecoder("utf-8");
     let quizId = null;
+    let buffer = ""; // Buffer to hold incomplete JSON chunks
+
     // Start reading the stream
     while (true) {
       const { value, done } = await reader.read();
@@ -72,23 +74,30 @@ const streamGenerateQuizRequestFromJobDescription = async (formData: any, setCur
       }
 
       // Decode and process the streamed data
-      const chunk = decoder.decode(value, { stream: true }).trim();
+      buffer += decoder.decode(value, { stream: true }).trim();
 
       // Process the JSON data
       try {
-        const parsedChunk = JSON.parse(chunk);
-        setCurrentPhase(parsedChunk.event);
-        console.log("Event received:", chunk);
+        // Split the buffer by the closing brace of JSON objects
+        const parts = buffer.split(/(?<=})/);
 
-        // Handle specific events
-        if (parsedChunk && parsedChunk.quiz_id) {
-          quizId = parsedChunk.quiz_id
+        for (let i = 0; i < parts.length - 1; i++) {
+          const parsedChunk = JSON.parse(parts[i]);
+          setCurrentPhase(parsedChunk.event);
+          console.log("Event received:", parts[i]);
+
+          // Handle specific events
+          if (parsedChunk && parsedChunk.quiz_id) {
+            quizId = parsedChunk.quiz_id;
+          }
         }
 
+        // Keep the last part in the buffer (it might be incomplete)
+        buffer = parts[parts.length - 1];
       } catch (error) {
-        console.log("Event received:", chunk);
-        setCurrentPhase(chunk);
-        console.error("Failed to parse chunk as JSON:", chunk, error);
+        console.log("Event received:", buffer);
+        setCurrentPhase(buffer);
+        console.error("Failed to parse chunk as JSON:", buffer, error);
       }
     }
 
